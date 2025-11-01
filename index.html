@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap"></noscript>
 
-  <!-- Preload LCP image -->
+  <!-- Preload LCP image (hero) -->
   <link rel="preload" as="image" href="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1400&auto=format&fit=crop">
 
   <!-- Open Graph / Twitter -->
@@ -37,10 +37,6 @@
   <meta name="twitter:description" content="דשא סינתטי, גיזום וניקוי עלים, הכנה לחורף — לוד, רמלה, באר יעקב.">
   <meta name="twitter:image" content="og-image.jpg">
 
-  <!-- (אופציונלי) Google Analytics 4 — החלף ב-ID שלך -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js', new Date());gtag('config','G-XXXXXXXXXX');</script> -->
-
   <style>
     :root{
       --brand:#1d8348; --brand-2:#27ae60; --ink:#0f172a; --muted:#475569;
@@ -53,6 +49,7 @@
     img{max-width:100%;display:block;border-radius:12px}
     .container{max-width:1120px;margin-inline:auto;padding:0 20px}
 
+    /* NAV */
     .nav{position:sticky;top:0;background:#fff;z-index:50;border-bottom:1px solid #edf2ef}
     .nav .inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
     .logo{display:flex;gap:10px;align-items:center}
@@ -62,6 +59,7 @@
     .btn.brand{background:linear-gradient(135deg,var(--brand-2),var(--brand));color:#fff}
     .btn.ghost{background:#f1f5f2;color:var(--ink)}
 
+    /* HERO */
     .hero{position:relative;overflow:hidden}
     .hero .inner{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;padding:36px 0}
     .hero h1{font-size: clamp(28px, 4vw, 46px);line-height:1.1;margin:0 0 10px}
@@ -74,23 +72,30 @@
     .kpi{padding:14px;text-align:center;border-radius:14px;background:#fff;border:1px solid #eff4f0}
     .kpi .num{font-size:22px;font-weight:800;color:var(--brand)}
 
+    /* Sections */
     .section{padding:32px 0}
     .section h2{font-size: clamp(22px,3.2vw,34px);margin:0 0 8px}
     .section p.lead{color:var(--muted);margin:0 0 24px}
 
+    /* Services */
     .services{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
     .service{background:var(--card);border:1px solid #eaf1ec;border-radius:16px;padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
     .service .icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#d1fae5,#86efac);display:grid;place-items:center;font-size:22px}
     .service h3{margin:0;font-size:17px}
     .service p{margin:0;color:var(--muted);font-size:14px}
 
+    /* Grid */
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+    /* Testimonial */
     .testimonial{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #eaf1ec;border-radius:16px;padding:16px}
     .avatar{width:46px;height:46px;border-radius:50%;background:#e2f7ec;display:grid;place-items:center;font-weight:800;color:#0d5132}
     .stars{color:#f59e0b;font-size:16px}
 
+    /* CTA */
     .cta{background:linear-gradient(135deg,var(--brand),#0ea24b);color:#fff;border-radius:20px;padding:24px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:10px}
 
+    /* Contact */
     .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
     form{background:#fff;border:1px solid #eaf1ec;border-radius:18px;padding:18px;box-shadow:var(--shadow)}
     label{font-weight:700;font-size:14px;margin-bottom:6px;display:block}
@@ -101,6 +106,7 @@
 
     .card{background:#fff;border:1px solid #eaf1ec;border-radius:18px;padding:16px;box-shadow:var(--shadow)}
 
+    /* Footer + floats */
     .footer{color:#dbe7df;background:#0b2f1f;margin-top:24px}
     .footer .inner{padding:18px 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:center}
     .footer a{color:#bbf7d0}
@@ -109,6 +115,27 @@
     .call-bar{position:fixed;inset-inline:0;inset-block-end:0;background:#0a8f47;color:#fff;display:none;justify-content:center;gap:12px;padding:10px 16px;z-index:60}
     .call-bar a{color:#fff;font-weight:800}
 
+    /* Before/After Compare */
+    .compare{position:relative;border-radius:16px;overflow:hidden;border:1px solid #eaf1ec;background:#fff}
+    .compare img{display:block;width:100%;height:auto;border-radius:0}
+    .compare .after{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos,50%)) 0 0)}
+    .compare .handle{position:absolute;inset:0;pointer-events:none}
+    .compare .bar{position:absolute;top:0;bottom:0;inset-inline-start:var(--pos,50%);width:2px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+    .compare .knob{position:absolute;top:50%;inset-inline-start:calc(var(--pos,50%) - 16px);width:32px;height:32px;border-radius:50%;background:#ffffff;border:1px solid #e5e7eb;box-shadow:var(--shadow);transform:translateY(-50%);display:grid;place-items:center;font-weight:800}
+    .compare .scrim{position:absolute;inset:0;pointer-events:auto}
+
+    /* Modal gallery */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;place-items:center;z-index:90}
+    .lightbox-inner{max-width:92vw;width:980px;max-height:90vh;background:#111;border-radius:18px;padding:12px;display:grid;gap:10px}
+    .lightbox img{max-height:72vh;margin-inline:auto;border-radius:12px}
+    .lightbox .controls{display:flex;justify-content:space-between;align-items:center;color:#fff}
+    .lightbox button{all:unset;cursor:pointer;padding:8px 12px;background:#1f2937;border-radius:10px}
+
+    /* Animations */
+    [data-rise]{opacity:0;transform:translateY(12px);transition:.5s ease}
+    [data-rise].in{opacity:1;transform:none}
+
+    /* responsive */
     @media (max-width: 1024px){
       .hero .inner{grid-template-columns:1fr;}
       .services{grid-template-columns:repeat(3,1fr)}
@@ -123,46 +150,6 @@
       .call-bar{display:flex}
       .nav .inner{gap:10px}
       .nav-cta{display:none}
-    }
-
-    [data-rise]{opacity:0;transform:translateY(12px);transition:.5s ease}
-    [data-rise].in{opacity:1;transform:none}
-
-    /* ===== Projects (before/after gallery) ===== */
-    .projects{display:grid;grid-template-columns:1fr;gap:16px}
-    .project-card{background:#fff;border:1px solid #eaf1ec;border-radius:16px;box-shadow:var(--shadow);padding:14px}
-    .project-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
-    .project-title{margin:0;font-size:18px}
-    .project-tags{font-size:13px;color:var(--muted)}
-
-    .ba-wrapper{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#e6efe8}
-    .ba-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;user-select:none;pointer-events:none}
-    .ba-before{clip-path:inset(0 50% 0 0)}
-    .ba-after{clip-path:inset(0 0 0 0)}
-    .ba-handle{position:absolute;inset:0 auto;left:50%;width:3px;background:#ffffff;box-shadow:0 0 0 1px rgba(0,0,0,.15)}
-    .ba-handle::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.9);box-shadow:var(--shadow)}
-    .ba-label{position:absolute;top:10px;padding:6px 10px;border-radius:999px;font-weight:800;font-size:13px;background:rgba(255,255,255,.85);box-shadow:var(--shadow)}
-    .ba-label-before{inset-inline-start:10px}
-    .ba-label-after{inset-inline-end:10px}
-
-    .more-btn{white-space:nowrap}
-
-    /* Lightbox */
-    .lightbox[hidden]{display:none}
-    .lightbox{position:fixed;inset:0;z-index:100}
-    .lightbox-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.5)}
-    .lightbox-body{position:relative;max-width:min(1080px,94vw);height:min(86vh,820px);margin:4vh auto;background:#fff;border-radius:16px;box-shadow:var(--shadow);display:flex;flex-direction:column}
-    .lightbox-head{padding:10px 12px;border-bottom:1px solid #e8efe8;display:flex;justify-content:space-between;align-items:center}
-    .lb-close{background:#f1f5f2;border:0;border-radius:8px;padding:6px 10px;cursor:pointer}
-    .lightbox-main{position:relative;display:grid;place-items:center;flex:1;background:#000}
-    #lbImage{max-width:100%;max-height:100%;object-fit:contain}
-    .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.85);border:0;border-radius:10px;padding:8px 12px;font-size:28px;cursor:pointer}
-    .lb-nav.prev{left:8px}
-    .lb-nav.next{right:8px}
-    .lightbox-foot{padding:8px 12px;border-top:1px solid #e8efe8;font-size:13px;color:var(--muted);text-align:center}
-
-    @media (max-width: 640px){
-      .project-head{flex-direction:column;align-items:flex-start}
     }
   </style>
 
@@ -263,82 +250,57 @@
     </div>
   </section>
 
-  <!-- WORK: גלריית לפני/אחרי + מודל -->
+  <!-- WORK: Projects with Before/After + Gallery -->
   <section id="work" class="section">
     <div class="container">
       <h2 data-rise>עבודות נבחרות — לפני/אחרי</h2>
-      <p class="lead" data-rise style="transition-delay:.08s">השוואת לפני/אחרי לכל פרויקט וגלריה מורחבת בלחיצה.</p>
+      <p class="lead" data-rise style="transition-delay:.08s">גררו את הידית כדי להשוות לפני/אחרי, ולחצו "עוד תמונות" לפתיחת גלריה.</p>
 
-      <div class="projects">
-        <!-- פרויקט 1: יוסי, לוד -->
-        <article class="project-card" data-rise>
-          <header class="project-head">
-            <div>
-              <h3 class="project-title">חצר יוסי — לוד</h3>
-              <div class="project-tags">ניקוי עומק · גיזום · ריסוס נגד עשבייה</div>
-            </div>
-            <button class="btn ghost more-btn"
-                    data-title="חצר יוסי — לוד"
-                    data-images="08f40711-005d-4b48-ac75-56a0366ab002.jpeg,27355617-e87d-47c6-9aef-959a033a2705.jpeg,4823e903-b302-4c83-9eee-2655cedf23ff.jpeg">
-              עוד תמונות
-            </button>
-          </header>
-          <div class="ba-wrapper" dir="ltr"
-               data-before="08f40711-005d-4b48-ac75-56a0366ab002.jpeg"
-               data-after="4823e903-b302-4c83-9eee-2655cedf23ff.jpeg"
-               aria-label="השוואת לפני ואחרי — חצר יוסי בלוד">
-            <img class="ba-img ba-before" loading="lazy" alt="לפני — חצר יוסי, לוד">
-            <img class="ba-img ba-after"  loading="lazy" alt="אחרי — חצר יוסי, לוד">
-            <div class="ba-handle" role="separator" aria-orientation="vertical" aria-label="גרור להשוואה"></div>
-            <div class="ba-label ba-label-before">לפני</div>
-            <div class="ba-label ba-label-after">אחרי</div>
+      <!-- Project 1: יוסי, לוד -->
+      <article class="card" style="margin-bottom:16px" data-rise>
+        <h3 style="margin-top:0">חצר יוסי — לוד</h3>
+        <div class="compare" data-compare style="--pos:50%">
+          <img src="08f40711-005d-4b48-ac75-56a0366ab002.jpeg" alt="לפני — גינה מוזנחת אצל יוסי, עשבייה גבוהה וצמחייה פראית" loading="lazy">
+          <img class="after" src="4823e903-b302-4c83-9eee-2655cedf23ff.jpeg" alt="אחרי — חצר נקייה ומוכנה לאירוח; לאחר ריסוס לעיכוב עשבייה" loading="lazy">
+          <div class="handle" aria-hidden="true">
+            <div class="bar"></div>
+            <div class="knob" aria-hidden="true">⇆</div>
           </div>
-        </article>
-
-        <!-- פרויקט 2: רח׳ דובדבן, לוד (הכנה לחורף) -->
-        <article class="project-card" data-rise style="transition-delay:.06s">
-          <header class="project-head">
-            <div>
-              <h3 class="project-title">רח׳ דובדבן — לוד (הכנה לחורף)</h3>
-              <div class="project-tags">גיזום עצים · ניקוי עלים · תחזוקת דשא סינתטי · הכנה לחורף</div>
-            </div>
-            <button class="btn ghost more-btn"
-                    data-title="רח׳ דובדבן — לוד"
-                    data-images="3e4b3513-5b3a-4f83-8c1b-4871a857d589.jpeg,ff37a9f5-083a-43dd-ad04-7a6dafbe78a2.jpeg,65374acc-445f-4809-997d-b5f498a16832.jpeg,2cdb5319-6227-4dcc-854a-f53b95e2ed94.jpeg,3a27ccdf-283e-40f2-afb1-d5cc488accee.jpeg,bdefaf29-6479-495a-9d43-5425146e7aba.jpeg,IMG-20250925-WA0042.jpg,IMG-20250925-WA0043.jpg,IMG-20250925-WA0044.jpg,IMG-20250925-WA0045.jpg">
-              עוד תמונות
-            </button>
-          </header>
-          <div class="ba-wrapper" dir="ltr"
-               data-before="IMG-20250925-WA0045.jpg"
-               data-after="IMG-20250925-WA0042.jpg"
-               aria-label="השוואת לפני ואחרי — רח׳ דובדבן, לוד">
-            <img class="ba-img ba-before" loading="lazy" alt="לפני — רח׳ דובדבן, לוד">
-            <img class="ba-img ba-after"  loading="lazy" alt="אחרי — רח׳ דובדבן, לוד">
-            <div class="ba-handle" role="separator" aria-orientation="vertical" aria-label="גרור להשוואה"></div>
-            <div class="ba-label ba-label-before">לפני</div>
-            <div class="ba-label ba-label-after">אחרי</div>
-          </div>
-        </article>
-      </div>
-    </div>
-
-    <!-- מודל גלריה -->
-    <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" hidden>
-      <div class="lightbox-backdrop" data-close></div>
-      <div class="lightbox-body" role="document">
-        <header class="lightbox-head">
-          <div class="lightbox-title" id="lbTitle">גלריה</div>
-          <button class="lb-close" aria-label="סגור" data-close>✕</button>
-        </header>
-        <div class="lightbox-main">
-          <button class="lb-nav prev" aria-label="התמונה הקודמת">‹</button>
-          <img id="lbImage" alt="תמונת גלריה">
-          <button class="lb-nav next" aria-label="התמונה הבאה">›</button>
+          <div class="scrim" role="slider" aria-label="השוואת לפני/אחרי" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"></div>
         </div>
-        <footer class="lightbox-foot">
-          <div id="lbCounter">1 / 1</div>
-        </footer>
-      </div>
+        <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+          <button class="btn ghost" data-gallery='["08f40711-005d-4b48-ac75-56a0366ab002.jpeg","27355617-e87d-47c6-9aef-959a033a2705.jpeg","4823e903-b302-4c83-9eee-2655cedf23ff.jpeg"]'>עוד תמונות</button>
+        </div>
+      </article>
+
+      <!-- Project 2: רח׳ דובדבן, לוד -->
+      <article class="card" data-rise>
+        <h3 style="margin-top:0">רח׳ דובדבן — לוד (תחזוקה והכנה לחורף)</h3>
+        <div class="compare" data-compare style="--pos:50%">
+          <img src="3e4b3513-5b3a-4f83-8c1b-4871a857d589.jpeg" alt="לפני — דובדבן, לוד" loading="lazy">
+          <img class="after" src="ff37a9f5-083a-43dd-ad04-7a6dafbe78a2.jpeg" alt="אחרי — דובדבן, לוד" loading="lazy">
+          <div class="handle" aria-hidden="true">
+            <div class="bar"></div>
+            <div class="knob" aria-hidden="true">⇆</div>
+          </div>
+          <div class="scrim" role="slider" aria-label="השוואת לפני/אחרי" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"></div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+          <button class="btn ghost" data-gallery='[
+            "3e4b3513-5b3a-4f83-8c1b-4871a857d589.jpeg",
+            "ff37a9f5-083a-43dd-ad04-7a6dafbe78a2.jpeg",
+            "65374acc-445f-4809-997d-b5f498a16832.jpeg",
+            "2cdb5319-6227-4dcc-854a-f53b95e2ed94.jpeg",
+            "3a27ccdf-283e-40f2-afb1-d5cc488accee.jpeg",
+            "bdefaf29-6479-495a-9d43-5425146e7aba.jpeg",
+            "IMG-20250925-WA0042.jpg",
+            "IMG-20250925-WA0043.jpg",
+            "IMG-20250925-WA0044.jpg",
+            "IMG-20250925-WA0045.jpg"
+          ]'>עוד תמונות</button>
+        </div>
+      </article>
+
     </div>
   </section>
 
@@ -453,6 +415,18 @@
     </div>
   </div>
 
+  <!-- LIGHTBOX Modal -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-inner" role="dialog" aria-label="גלריית תמונות">
+      <div class="controls">
+        <button id="lbPrev" aria-label="תמונה קודמת">◀</button>
+        <button id="lbClose" aria-label="סגירה">✕</button>
+        <button id="lbNext" aria-label="תמונה הבאה">▶</button>
+      </div>
+      <img id="lbImg" alt="תמונה מהגלריה"/>
+    </div>
+  </div>
+
   <script>
     // שנה
     document.getElementById('y').textContent = new Date().getFullYear();
@@ -467,19 +441,21 @@
     const FORM_ENDPOINT = 'https://formspree.io/f/xblppbok';
     const leadForm = document.getElementById('leadForm');
     const statusEl = document.getElementById('formStatus');
-    leadForm.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      statusEl.textContent = 'שולח...';
-      const data = Object.fromEntries(new FormData(leadForm).entries());
-      try{
-        const res = await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(data)});
-        if(res.ok){ statusEl.style.color='#0a8f47'; statusEl.textContent='נשלח בהצלחה! נחזור אליך בקרוב.'; leadForm.reset(); }
-        else{ throw new Error('HTTP '+res.status); }
-      }catch(err){
-        statusEl.style.color='#b45309';
-        statusEl.innerHTML='תקלה בשליחה. אפשר <a href="mailto:sbhtk1400@gmail.com">לשלוח מייל</a> או <a href="https://wa.me/972534295336">וואטסאפ</a>.';
-      }
-    });
+    if (leadForm) {
+      leadForm.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        statusEl.textContent = 'שולח...';
+        const data = Object.fromEntries(new FormData(leadForm).entries());
+        try{
+          const res = await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(data)});
+          if(res.ok){ statusEl.style.color='#0a8f47'; statusEl.textContent='נשלח בהצלחה! נחזור אליך בקרוב.'; leadForm.reset(); }
+          else{ throw new Error('HTTP '+res.status); }
+        }catch(err){
+          statusEl.style.color='#b45309';
+          statusEl.innerHTML='תקלה בשליחה. אפשר <a href="mailto:sbhtk1400@gmail.com">לשלוח מייל</a> או <a href="https://wa.me/972534295336">וואטסאפ</a>.';
+        }
+      });
+    }
 
     // פופ-אפ חורף: נפתח אחרי 12 שנ׳ או בגלילת 60%
     const winterPopup = document.getElementById('winterPopup');
@@ -487,123 +463,78 @@
     function openWinter(){ if(!sessionStorage.getItem('winterShown')){ winterPopup.style.display='grid'; sessionStorage.setItem('winterShown','1'); } }
     setTimeout(openWinter, 12000);
     window.addEventListener('scroll',()=>{ if(window.scrollY > (document.body.scrollHeight*0.6)) openWinter(); }, {passive:true});
-    winterClose.addEventListener('click',()=> winterPopup.style.display='none');
+    if (winterClose) winterClose.addEventListener('click',()=> winterPopup.style.display='none');
 
     // שליחת טופס פופ-אפ
     const winterForm = document.getElementById('winterForm');
-    winterForm.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(winterForm).entries());
-      data.source='winter-popup';
-      try{
-        await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(data)});
-        winterPopup.style.display='none'; alert('תודה! נחזור אליך להצעת חורף.'); winterForm.reset();
-      }catch(err){ alert('תקלה בשליחה, נסו שוב או צרו קשר בוואטסאפ.'); }
-    });
-
-    /* ==== Before/After init ==== */
-    function initBeforeAfter() {
-      document.querySelectorAll('.ba-wrapper').forEach(wrapper=>{
-        const beforeSrc = wrapper.getAttribute('data-before');
-        const afterSrc  = wrapper.getAttribute('data-after');
-        const beforeImg = wrapper.querySelector('.ba-before');
-        const afterImg  = wrapper.querySelector('.ba-after');
-        const handle    = wrapper.querySelector('.ba-handle');
-
-        beforeImg.src = beforeSrc;
-        afterImg.src  = afterSrc;
-
-        const setSplit = (xPct)=>{
-          xPct = Math.max(0, Math.min(100, xPct));
-          beforeImg.style.clipPath = `inset(0 ${100-xPct}% 0 0)`;
-          handle.style.left = `${xPct}%`;
-        };
-
-        let active = false;
-        const start = (e)=>{active=true; move(e); e.preventDefault();};
-        const end   = ()=>{active=false;};
-        const move  = (e)=>{
-          if(!active) return;
-          const rect = wrapper.getBoundingClientRect();
-          const clientX = (e.touches && e.touches[0]?.clientX) || e.clientX;
-          const x = clientX - rect.left;
-          const pct = (x / rect.width) * 100;
-          setSplit(pct);
-        };
-
-        // התחלה באמצע
-        setSplit(50);
-
-        handle.addEventListener('mousedown', start);
-        window.addEventListener('mouseup', end);
-        window.addEventListener('mousemove', move);
-        handle.addEventListener('touchstart', start, {passive:false});
-        window.addEventListener('touchend', end);
-        window.addEventListener('touchmove', move, {passive:false});
+    if (winterForm) {
+      winterForm.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(winterForm).entries());
+        data.source='winter-popup';
+        try{
+          await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(data)});
+          winterPopup.style.display='none'; alert('תודה! נחזור אליך להצעת חורף.'); winterForm.reset();
+        }catch(err){ alert('תקלה בשליחה, נסו שוב או צרו קשר בוואטסאפ.'); }
       });
     }
 
-    /* ==== Lightbox ==== */
-    (function(){
-      const lb = document.getElementById('lightbox');
-      const img = document.getElementById('lbImage');
-      const titleEl = document.getElementById('lbTitle');
-      const counter = document.getElementById('lbCounter');
-      const prevBtn = lb.querySelector('.lb-nav.prev');
-      const nextBtn = lb.querySelector('.lb-nav.next');
-
-      let list = [];
-      let idx = 0;
-
-      function open(images, title, startIndex=0){
-        list = images;
-        idx = startIndex;
-        titleEl.textContent = title || 'גלריה';
-        render();
-        lb.hidden = false;
-        document.body.style.overflow = 'hidden';
-      }
-      function close(){
-        lb.hidden = true;
-        document.body.style.overflow = '';
-      }
-      function render(){
-        img.src = list[idx];
-        img.alt = `${titleEl.textContent} — תמונה ${idx+1}`;
-        counter.textContent = `${idx+1} / ${list.length}`;
-      }
-      function next(){ idx = (idx+1) % list.length; render(); }
-      function prev(){ idx = (idx-1+list.length) % list.length; render(); }
-
-      // האזנות
-      document.querySelectorAll('.more-btn').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          const title = btn.dataset.title || 'גלריה';
-          const images = (btn.dataset.images || '')
-            .split(',')
-            .map(s=>s.trim())
-            .filter(Boolean);
-          open(images, title, 0);
-        });
+    // Before/After compare init
+    document.querySelectorAll('[data-compare]').forEach(setupCompare);
+    function setupCompare(wrapper){
+      const scrim = wrapper.querySelector('.scrim');
+      const afterImg = wrapper.querySelector('.after');
+      const setPos = (px)=>{
+        const rect = wrapper.getBoundingClientRect();
+        const x = Math.max(0, Math.min(px - rect.left, rect.width));
+        const percent = (x / rect.width) * 100;
+        wrapper.style.setProperty('--pos', percent + '%');
+        scrim.setAttribute('aria-valuenow', Math.round(percent));
+      };
+      let dragging=false;
+      const onMove = (ev)=>{ if(!dragging) return; const p = ev.touches? ev.touches[0].clientX : ev.clientX; setPos(p); };
+      scrim.addEventListener('pointerdown', (ev)=>{ dragging=true; scrim.setPointerCapture(ev.pointerId); setPos(ev.clientX); });
+      window.addEventListener('pointermove', onMove);
+      window.addEventListener('pointerup', ()=> dragging=false);
+      // Touch fallback
+      scrim.addEventListener('touchstart', (ev)=>{ dragging=true; setPos(ev.touches[0].clientX); }, {passive:true});
+      window.addEventListener('touchmove', onMove, {passive:true});
+      window.addEventListener('touchend', ()=> dragging=false);
+      // Keyboard
+      scrim.addEventListener('keydown',(e)=>{
+        const step = (e.shiftKey? 10: 2); // Shift = מהירות
+        const style = getComputedStyle(wrapper).getPropertyValue('--pos').trim();
+        const val = parseFloat(style);
+        let next = val;
+        if(e.key==='ArrowLeft') next = Math.max(0, val - step);
+        if(e.key==='ArrowRight') next = Math.min(100, val + step);
+        wrapper.style.setProperty('--pos', next + '%');
+        scrim.setAttribute('aria-valuenow', Math.round(next));
       });
+      // Reflow on resize
+      new ResizeObserver(()=>{}).observe(wrapper);
+    }
 
-      lb.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click', close));
-      nextBtn.addEventListener('click', next);
-      prevBtn.addEventListener('click', prev);
-      document.addEventListener('keydown', (e)=>{
-        if(lb.hidden) return;
-        if(e.key === 'Escape') close();
-        if(e.key === 'ArrowRight') next();
-        if(e.key === 'ArrowLeft') prev();
+    // Lightbox gallery
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbPrev = document.getElementById('lbPrev');
+    const lbNext = document.getElementById('lbNext');
+    const lbClose = document.getElementById('lbClose');
+    let gallery=[], idx=0;
+    function openLB(arr, start=0){ gallery = arr; idx=start; renderLB(); lb.style.display='grid'; lb.setAttribute('aria-hidden','false'); }
+    function closeLB(){ lb.style.display='none'; lb.setAttribute('aria-hidden','true'); }
+    function renderLB(){ lbImg.src = gallery[idx]; }
+    lbPrev.addEventListener('click',()=>{ idx=(idx-1+gallery.length)%gallery.length; renderLB(); });
+    lbNext.addEventListener('click',()=>{ idx=(idx+1)%gallery.length; renderLB(); });
+    lbClose.addEventListener('click', closeLB);
+    window.addEventListener('keydown',(e)=>{ if(lb.style.display==='grid'){ if(e.key==='Escape') closeLB(); if(e.key==='ArrowLeft') lbPrev.click(); if(e.key==='ArrowRight') lbNext.click(); } });
+
+    document.querySelectorAll('[data-gallery]').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        try{ const arr = JSON.parse(btn.getAttribute('data-gallery')); openLB(arr,0); }catch(err){ console.error('bad gallery json', err); }
       });
-
-      // INIT after DOM ready
-      if(document.readyState !== 'loading') {
-        initBeforeAfter();
-      } else {
-        document.addEventListener('DOMContentLoaded', initBeforeAfter);
-      }
-    })();
+    });
   </script>
 
   <!-- FAQ schema -->
