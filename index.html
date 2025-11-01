@@ -3,19 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ירוק בעיר — הקמה, תחזוקה ודשא סינתטי | צור קשר עכשיו</title>
-  <meta name="description" content="ירוק בעיר — הקמת גינות, תחזוקת גינות, דשא סינתטי, גיזום עצים ומערכות השקיה. מקצועיות, אמינות, וזמינות מהירה. השאר פרטים ונחזור אליך." />
+  <title>ירוק בעיר — הקמת ותחזוקת גינות | דשא סינתטי וגיזום עצים בלוד, רמלה ובאר יעקב</title>
+  <meta name="description" content="ירוק בעיר — גינון מקצועי בלוד, רמלה, באר יעקב והסביבה: הקמת גינות, תחזוקה, דשא סינתטי, גיזום/ניקוי והכנה לחורף. זמינות מהירה, שירות אמין והצעת מחיר במקום." />
   <meta name="format-detection" content="telephone=no" />
+
+  <!-- favicon -->
   <link rel="icon" href="שלט ירוק בעיר.png" type="image/png" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://daniel24ka.github.io/yarok-city-landing/" />
+
+  <!-- Theme color -->
+  <meta name="theme-color" content="#1d8348" />
+
+  <!-- Fonts: performance -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap"></noscript>
+
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1400&auto=format&fit=crop">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:title" content="ירוק בעיר — גינון, דשא סינתטי וגיזום עצים בלוד, רמלה ובאר יעקב">
+  <meta property="og:description" content="הקמה ותחזוקה של גינות, דשא סינתטי, גיזום והכנה לחורף. זמינות מהירה במרכז.">
+  <meta property="og:url" content="https://daniel24ka.github.io/yarok-city-landing/">
+  <meta property="og:image" content="og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ירוק בעיר — גינון מתקדם במרכז">
+  <meta name="twitter:description" content="דשא סינתטי, גיזום וניקוי עלים, הכנה לחורף — לוד, רמלה, באר יעקב.">
+  <meta name="twitter:image" content="og-image.jpg">
+
+  <!-- (אופציונלי) Google Analytics 4 — החלף ב-ID שלך -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js', new Date());gtag('config','G-XXXXXXXXXX');</script> -->
+
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --brand:#1d8348; --brand-2:#27ae60;
-      --ink:#0f172a; --muted:#475569;
-      --bg:#f5f7f5; --card:#ffffff;
-      --accent:#c2fbd7; --danger:#e11d48;
+      --brand:#1d8348; --brand-2:#27ae60; --ink:#0f172a; --muted:#475569;
+      --bg:#f5f7f5; --card:#ffffff; --accent:#c2fbd7; --danger:#e11d48;
       --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.08);
     }
     *{box-sizing:border-box}
@@ -24,7 +55,6 @@
     img{max-width:100%;display:block;border-radius:12px}
     .container{max-width:1120px;margin-inline:auto;padding:0 20px}
 
-    /* NAV */
     .nav{position:sticky;top:0;background:#fff;z-index:50;border-bottom:1px solid #edf2ef}
     .nav .inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
     .logo{display:flex;gap:10px;align-items:center}
@@ -34,11 +64,10 @@
     .btn.brand{background:linear-gradient(135deg,var(--brand-2),var(--brand));color:#fff}
     .btn.ghost{background:#f1f5f2;color:var(--ink)}
 
-    /* HERO */
     .hero{position:relative;overflow:hidden}
     .hero .inner{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;padding:36px 0}
-    .hero h1{font-size:clamp(28px,4vw,46px);line-height:1.1;margin:0 0 10px}
-    .hero p{font-size:clamp(16px,2.2vw,18px);color:var(--muted);margin:0 0 18px}
+    .hero h1{font-size: clamp(28px, 4vw, 46px);line-height:1.1;margin:0 0 10px}
+    .hero p{font-size: clamp(16px, 2.2vw, 18px);color:var(--muted);margin:0 0 18px}
     .hero .badges{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 22px}
     .chip{background:#e7f8ee;border:1px solid #c7efd9;color:#0d5132;padding:8px 12px;border-radius:999px;font-weight:700;font-size:13px}
     .glass{background:rgba(255,255,255,.55);backdrop-filter:blur(6px);border:1px solid #e6efe8;border-radius:var(--radius);box-shadow:var(--shadow)}
@@ -47,43 +76,23 @@
     .kpi{padding:14px;text-align:center;border-radius:14px;background:#fff;border:1px solid #eff4f0}
     .kpi .num{font-size:22px;font-weight:800;color:var(--brand)}
 
-    /* SECTIONS */
     .section{padding:32px 0}
-    .section h2{font-size:clamp(22px,3.2vw,34px);margin:0 0 8px}
+    .section h2{font-size: clamp(22px,3.2vw,34px);margin:0 0 8px}
     .section p.lead{color:var(--muted);margin:0 0 24px}
 
-    /* SERVICES */
     .services{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
     .service{background:var(--card);border:1px solid #eaf1ec;border-radius:16px;padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
     .service .icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#d1fae5,#86efac);display:grid;place-items:center;font-size:22px}
     .service h3{margin:0;font-size:17px}
     .service p{margin:0;color:var(--muted);font-size:14px}
 
-    /* WORK (cards + before/after + modal) */
-    .work-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .work-card{background:#fff;border:1px solid #eaf1ec;border-radius:16px;padding:14px;box-shadow:var(--shadow)}
-    .work-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
-    .tag{background:#e7f8ee;border:1px solid #c7efd9;color:#0d5132;font-weight:700;border-radius:999px;padding:6px 10px;font-size:12px}
-    .ba-wrap{position:relative;overflow:hidden;border-radius:12px}
-    .ba-wrap img{width:100%;height:auto;display:block}
-    .ba-after{position:absolute;inset:0;transition:opacity .35s ease;border-radius:12px}
-    .ba-toggle{display:flex;align-items:center;gap:8px;margin-top:8px}
-    .switch{position:relative;width:54px;height:28px;background:#e6efe8;border-radius:999px;cursor:pointer}
-    .knob{position:absolute;top:3px;right:3px;width:22px;height:22px;background:#fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.15);transition:all .25s}
-    .switch.on{background:linear-gradient(135deg,var(--brand-2),var(--brand))}
-    .switch.on .knob{right:29px}
-    .work-footer{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .mini{font-size:12px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .testimonial{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #eaf1ec;border-radius:16px;padding:16px}
+    .avatar{width:46px;height:46px;border-radius:50%;background:#e2f7ec;display:grid;place-items:center;font-weight:800;color:#0d5132}
+    .stars{color:#f59e0b;font-size:16px}
 
-    /* Modal gallery */
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:20px;z-index:80}
-    .modal.show{display:flex}
-    .modal-card{background:#fff;border-radius:16px;max-width:1000px;width:100%;padding:10px;box-shadow:var(--shadow);display:grid;gap:8px}
-    .modal-top{display:flex;justify-content:space-between;align-items:center}
-    .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-    .modal-close{border:0;background:#f1f5f2;border-radius:10px;padding:8px 12px;cursor:pointer;font-weight:800}
+    .cta{background:linear-gradient(135deg,var(--brand),#0ea24b);color:#fff;border-radius:20px;padding:24px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:10px}
 
-    /* CONTACT */
     .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
     form{background:#fff;border:1px solid #eaf1ec;border-radius:18px;padding:18px;box-shadow:var(--shadow)}
     label{font-weight:700;font-size:14px;margin-bottom:6px;display:block}
@@ -94,7 +103,6 @@
 
     .card{background:#fff;border:1px solid #eaf1ec;border-radius:18px;padding:16px;box-shadow:var(--shadow)}
 
-    /* FOOTER + FLOATS */
     .footer{color:#dbe7df;background:#0b2f1f;margin-top:24px}
     .footer .inner{padding:18px 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:center}
     .footer a{color:#bbf7d0}
@@ -103,30 +111,27 @@
     .call-bar{position:fixed;inset-inline:0;inset-block-end:0;background:#0a8f47;color:#fff;display:none;justify-content:center;gap:12px;padding:10px 16px;z-index:60}
     .call-bar a{color:#fff;font-weight:800}
 
-    /* responsive */
-    @media (max-width:1024px){
+    @media (max-width: 1024px){
       .hero .inner{grid-template-columns:1fr;}
       .services{grid-template-columns:repeat(3,1fr)}
       .contact{grid-template-columns:1fr}
       .cta{grid-template-columns:1fr}
       .footer .inner{grid-template-columns:1fr}
-      .work-list{grid-template-columns:1fr}
     }
-    @media (max-width:640px){
+    @media (max-width: 640px){
       .services{grid-template-columns:repeat(2,1fr)}
+      .grid{grid-template-columns:1fr}
       .kpis{grid-template-columns:repeat(3,1fr)}
       .call-bar{display:flex}
       .nav .inner{gap:10px}
       .nav-cta{display:none}
-      .modal-grid{grid-template-columns:1fr}
     }
 
-    /* tiny motion */
     [data-rise]{opacity:0;transform:translateY(12px);transition:.5s ease}
     [data-rise].in{opacity:1;transform:none}
   </style>
 
-  <!-- SEO (Schema.org) -->
+  <!-- LocalBusiness schema (עודכן לאזורי שירות) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -135,7 +140,7 @@
     "image": "שלט ירוק בעיר.png",
     "telephone": "+972-53-429-5336",
     "address": {"@type":"PostalAddress","addressLocality":"לוד","addressCountry":"IL"},
-    "areaServed": "מרכז ישראל",
+    "areaServed": ["לוד","רמלה","באר יעקב"],
     "url": "https://daniel24ka.github.io/yarok-city-landing/",
     "sameAs": []
   }
@@ -146,7 +151,8 @@
   <nav class="nav">
     <div class="container inner">
       <div class="logo" aria-label="ירוק בעיר">
-        <img src="שלט ירוק בעיר.png" alt="לוגו ירוק בעיר" style="width:48px;height:48px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);" />
+        <img src="שלט ירוק בעיר.png" alt="לוגו ירוק בעיר" width="48" height="48"
+             style="width:48px;height:48px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);" />
         <div>
           <div style="font-size:18px;line-height:1;font-weight:800">ירוק בעיר</div>
           <div style="font-size:12px;color:var(--muted)">גינון • אחזקה • הקמת גינות</div>
@@ -164,11 +170,11 @@
   <header class="hero">
     <div class="container inner">
       <div>
-        <h1 data-rise>הטבע חוזר לעיר — <br/>דשא ירוק, גינה מטופחת, ראש שקט</h1>
-        <p data-rise style="transition-delay:.08s">הקמת גינות, תחזוקה שוטפת, דשא סינתטי באיכות גבוהה, גיזום עצים ומערכות השקיה חכמות. איכות ללא פשרות, שירות מהיר ואמין.</p>
+        <h1 data-rise>גינון מקצועי בלוד, רמלה ובאר יעקב — דשא ירוק, גיזום מדויק והכנה לחורף</h1>
+        <p data-rise style="transition-delay:.08s">הקמת גינות, תחזוקה שוטפת, דשא סינתטי באיכות גבוהה, גיזום עצים, ניקוי עלים ומערכות השקיה חכמות. איכות ללא פשרות, שירות מהיר ואמין.</p>
         <div class="badges">
-          <span class="chip">✔️ אחריות ושקיפות מלאה</span>
-          <span class="chip">🚚 זמינות מהירה במרכז</span>
+          <span class="chip">✔️ אחריות מלאה ושקיפות</span>
+          <span class="chip">🚚 זמינות מהירה בלוד, רמלה ובאר יעקב</span>
           <span class="chip">⭐ לקוחות מרוצים וממליצים</span>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
@@ -183,10 +189,10 @@
       </div>
       <div>
         <div class="hero-card glass">
-          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1400&auto=format&fit=crop" alt="גינה ירוקה מטופחת"/>
+          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1400&auto=format&fit=crop" alt="גינה ירוקה מטופחת" width="1400" height="934" decoding="async" loading="eager"/>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
-            <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=1200&auto=format&fit=crop" alt="דשא סינתטי"/>
-            <img src="https://images.unsplash.com/photo-1465922615491-b2c4f38df8d8?q=80&w=1200&auto=format&fit=crop" alt="מערכת השקיה"/>
+            <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=1200&auto=format&fit=crop" alt="דשא סינתטי" width="600" height="400" decoding="async" loading="lazy"/>
+            <img src="https://images.unsplash.com/photo-1465922615491-b2c4f38df8d8?q=80&w=1200&auto=format&fit=crop" alt="מערכת השקיה" width="600" height="400" decoding="async" loading="lazy"/>
           </div>
         </div>
       </div>
@@ -196,27 +202,28 @@
   <!-- SERVICES -->
   <section id="services" class="section">
     <div class="container">
-      <h2 data-rise>שירותים מובילים</h2>
-      <p class="lead" data-rise style="transition-delay:.08s">כל פתרונות הגינון תחת קורת גג אחת — הקמה, תחזוקה ושדרוג חכם.</p>
+      <h2 data-rise>שירותי גינון מובילים בלוד, רמלה ובאר יעקב</h2>
+      <p class="lead" data-rise style="transition-delay:.08s">כל פתרונות הגינון תחת קורת גג אחת — בלוד, רמלה, באר יעקב והסביבה: הקמה, תחזוקה, דשא סינתטי, גיזום והכנה לחורף.</p>
       <div class="services">
-        <article class="service" data-rise>
-          <div class="icon">🏡</div><h3>הקמת גינות</h3><p>תכנון וביצוע מלא: צמחייה, תשתיות, תאורה, שבילים ועיצוב.</p>
-        </article>
-        <article class="service" data-rise style="transition-delay:.05s">
-          <div class="icon">🧰</div><h3>אחזקה שוטפת</h3><p>גיזום, ניקיון, דישון, הדברת עשבים וליטוש מראה הגינה.</p>
-        </article>
-        <article class="service" data-rise style="transition-delay:.1s">
-          <div class="icon">🌱</div><h3>דשא סינתטי</h3><p>אספקה והתקנה מדויקת עם תשתית וניקוז מקצועיים.</p>
-        </article>
-        <article class="service" data-rise style="transition-delay:.15s">
-          <div class="icon">🌳</div><h3>גיזום ועצי נוי</h3><p>גיזום בטיחותי ואסתטי, פינוי ענפים וניקיון מלא בסיום.</p>
-        </article>
-        <article class="service" data-rise style="transition-delay:.2s">
-          <div class="icon">💧</div><h3>מערכות השקיה</h3><p>תכנון חכם, טיימרים ובקרה לחיסכון במים ובעלויות.</p>
-        </article>
-        <article class="service" data-rise style="transition-delay:.25s">
-          <div class="icon">🪴</div><h3>שדרוגים ושיפורים</h3><p>חיפויי קרקע, ערוגות, אבני מדרך, ניקיון עומק והחזרת הירוק.</p>
-        </article>
+        <article class="service" data-rise><div class="icon">🏡</div><h3>הקמת גינות</h3><p>תכנון וביצוע מלא: צמחייה, תשתיות, תאורה, שבילים ועיצוב.</p></article>
+        <article class="service" data-rise style="transition-delay:.05s"><div class="icon">🧰</div><h3>אחזקה שוטפת</h3><p>גיזום, ניקיון, דישון, הדברת עשבים וליטוש מראה הגינה.</p></article>
+        <article class="service" data-rise style="transition-delay:.1s"><div class="icon">🌱</div><h3>דשא סינתטי</h3><p>אספקה והתקנה מדויקת עם תשתית וניקוז מקצועיים.</p></article>
+        <article class="service" data-rise style="transition-delay:.15s"><div class="icon">🌳</div><h3>גיזום ועצי נוי</h3><p>גיזום בטיחותי ואסתטי, פינוי ענפים וניקיון מלא בסיום.</p></article>
+        <article class="service" data-rise style="transition-delay:.2s"><div class="icon">💧</div><h3>מערכות השקיה</h3><p>תכנון חכם, טיימרים ובקרה לחיסכון במים ובעלויות.</p></article>
+        <article class="service" data-rise style="transition-delay:.25s"><div class="icon">🪴</div><h3>שדרוגים ושיפורים</h3><p>חיפויי קרקע, ערוגות, אבני מדרך, ניקיון עומק והחזרת הירוק.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREAS (SEO) -->
+  <section class="section">
+    <div class="container">
+      <h2 data-rise>אזורי שירות</h2>
+      <p class="lead" data-rise style="transition-delay:.08s">לוד • רמלה • באר יעקב • מודיעין והסביבה. מזמינים <a href="#contact">הצעת מחיר מהירה</a>.</p>
+      <div class="grid">
+        <div class="card" data-rise><h3>גינון בלוד</h3><p>הקמת גינות, דשא סינתטי, גיזום וכיוונון השקיה — מענה מהיר לכל שכונות לוד.</p></div>
+        <div class="card" data-rise style="transition-delay:.05s"><h3>גינון ברמלה</h3><p>אחזקה שוטפת, ניקוי עלים והכנה לחורף לבתים פרטיים ובנייני מגורים.</p></div>
+        <div class="card" data-rise style="transition-delay:.1s"><h3>גינון בבאר יעקב</h3><p>דשא סינתטי איכותי, גיזום עצים בטיחותי ושדרוג גינות.</p></div>
       </div>
     </div>
   </section>
@@ -224,69 +231,12 @@
   <!-- WORK -->
   <section id="work" class="section">
     <div class="container">
-      <h2 data-rise>עבודות שביצענו (לפני/אחרי)</h2>
-      <p class="lead" data-rise style="transition-delay:.08s">גיזום עצים, ניקוי עלים, תחזוקת דשא סינתטי והכנה לחורף ברחבי המרכז.</p>
-
-      <div class="work-list">
-        <!-- כרטיס: רחוב דובדבן -->
-        <article class="work-card" data-rise>
-          <div class="work-head">
-            <div>
-              <strong>רחוב דובדבן, לוד — הכנה לחורף</strong>
-              <div class="mini">גיזום עצים • ניקוי עלים • תחזוקת דשא סינתטי</div>
-            </div>
-            <span class="tag">לפני/אחרי</span>
-          </div>
-
-          <div class="ba-wrap">
-            <!-- לפני -->
-            <img src="3e4b3513-5b3a-4f83-8c1b-4871a857d589.jpeg" alt="רח' דובדבן לוד — לפני העבודה">
-            <!-- אחרי -->
-            <img class="ba-after" style="opacity:0" src="IMG-20250925-WA0045.jpg" alt="רח' דובדבן לוד — אחרי העבודה">
-          </div>
-
-          <div class="ba-toggle">
-            <span class="mini">לפני</span>
-            <div class="switch" data-switch>
-              <div class="knob"></div>
-            </div>
-            <span class="mini">אחרי</span>
-          </div>
-
-          <div class="work-footer">
-            <button class="btn brand" data-open="duvdevan">עוד תמונות</button>
-            <a class="btn ghost" href="#contact">רוצה הצעת מחיר?</a>
-          </div>
-        </article>
-
-        <!-- כרטיס: יוסי -->
-        <article class="work-card" data-rise style="transition-delay:.05s">
-          <div class="work-head">
-            <div>
-              <strong>שיקום גינה — יוסי</strong>
-              <div class="mini">ניקוי עומק • פינוי • ריסוס האטת עשביה</div>
-            </div>
-            <span class="tag">לפני/אחרי</span>
-          </div>
-
-          <div class="ba-wrap">
-            <img src="08f40711-005d-4b48-ac75-56a0366ab002.jpeg" alt="גינת יוסי — לפני">
-            <img class="ba-after" style="opacity:0" src="4823e903-b302-4c83-9eee-2655cedf23ff.jpeg" alt="גינת יוסי — אחרי">
-          </div>
-
-          <div class="ba-toggle">
-            <span class="mini">לפני</span>
-            <div class="switch" data-switch>
-              <div class="knob"></div>
-            </div>
-            <span class="mini">אחרי</span>
-          </div>
-
-          <div class="work-footer">
-            <button class="btn brand" data-open="yossi">עוד תמונות</button>
-            <a class="btn ghost" href="#contact">רוצה הצעת מחיר?</a>
-          </div>
-        </article>
+      <h2 data-rise>עבודות נבחרות</h2>
+      <p class="lead" data-rise style="transition-delay:.08s">לפני/אחרי ותמונות מהשטח. אפשר להחליף לתמונות הפרויקטים שלך (כולל דובדבן, לוד).</p>
+      <div class="grid">
+        <img data-rise src="https://images.unsplash.com/photo-1525498128493-380d1990a112?q=80&w=1200&auto=format&fit=crop" alt="התקנת דשא" width="1200" height="800" decoding="async" loading="lazy"/>
+        <img data-rise style="transition-delay:.05s" src="https://images.unsplash.com/photo-1504648647358-9e7ddb22b309?q=80&w=1200&auto=format&fit=crop" alt="גינה פרטית" width="1200" height="800" decoding="async" loading="lazy"/>
+        <img data-rise style="transition-delay:.1s" src="https://images.unsplash.com/photo-1458134580443-fbb0743304fe?q=80&w=1200&auto=format&fit=crop" alt="טיפוח ערוגות" width="1200" height="800" decoding="async" loading="lazy"/>
       </div>
     </div>
   </section>
@@ -295,31 +245,10 @@
   <section class="section">
     <div class="container">
       <h2 data-rise>מה הלקוחות אומרים</h2>
-      <div class="grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px">
-        <div class="testimonial" data-rise>
-          <div class="avatar">א</div>
-          <div>
-            <div class="stars">★★★★★</div>
-            <p style="margin:6px 0 0">"שירות מקצועי ומהיר. הגינה נראית סוף הדרך! ממליצה בחום."</p>
-            <div style="color:var(--muted);font-size:13px;margin-top:4px">אורית, לוד</div>
-          </div>
-        </div>
-        <div class="testimonial" data-rise style="transition-delay:.05s">
-          <div class="avatar">י</div>
-          <div>
-            <div class="stars">★★★★★</div>
-            <p style="margin:6px 0 0">"דשא סינתטי איכותי והתקנה מדויקת. עמדו בזמנים והשאירו נקי."</p>
-            <div style="color:var(--muted);font-size:13px;margin-top:4px">יוסי, רמלה</div>
-          </div>
-        </div>
-        <div class="testimonial" data-rise style="transition-delay:.1s">
-          <div class="avatar">ד</div>
-          <div>
-            <div class="stars">★★★★★</div>
-            <p style="margin:6px 0 0">"תחזוקה שוטפת ברמה גבוהה. יחס אישי וסופר אמין."</p>
-            <div style="color:var(--muted);font-size:13px;margin-top:4px">דנה, תל אביב</div>
-          </div>
-        </div>
+      <div class="grid" style="margin-top:10px">
+        <div class="testimonial" data-rise><div class="avatar">א</div><div><div class="stars">★★★★★</div><p style="margin:6px 0 0">"שירות מקצועי ומהיר. הגינה נראית סוף הדרך! ממליצה בחום."</p><div style="color:var(--muted);font-size:13px;margin-top:4px">אורית, לוד</div></div></div>
+        <div class="testimonial" data-rise style="transition-delay:.05s"><div class="avatar">י</div><div><div class="stars">★★★★★</div><p style="margin:6px 0 0">"דשא סינתטי איכותי והתקנה מדויקת. עמדו בזמנים והשאירו נקי."</p><div style="color:var(--muted);font-size:13px;margin-top:4px">יוסי, רמלה</div></div></div>
+        <div class="testimonial" data-rise style="transition-delay:.1s"><div class="avatar">ד</div><div><div class="stars">★★★★★</div><p style="margin:6px 0 0">"תחזוקה שוטפת ברמה גבוהה. יחס אישי וסופר אמין."</p><div style="color:var(--muted);font-size:13px;margin-top:4px">דנה, באר יעקב</div></div></div>
       </div>
     </div>
   </section>
@@ -327,7 +256,7 @@
   <!-- CTA STRIP -->
   <section class="section">
     <div class="container">
-      <div class="cta glass" data-rise>
+      <div class="cta" data-rise>
         <div>
           <h3 style="margin:0 0 4px">רוצה גינה יפה ומטופחת — בלי כאב ראש?</h3>
           <p style="margin:0;opacity:.95">נשמח להגיע לייעוץ ללא התחייבות ולתת הצעת מחיר במקום.</p>
@@ -348,16 +277,18 @@
         <p class="lead" style="margin-top:-6px">ממלאים 20 שניות ושולחים — חוזרים אליך בהקדם.</p>
         <div class="form-row">
           <div><label for="name">שם מלא</label><input id="name" name="name" placeholder="שם" required /></div>
-          <div><label for="phone">טלפון</label><input id="phone" name="phone" placeholder="05x-xxxxxxx" inputmode="tel" pattern="[0-9\-\s+]{7,}" required /></div>
+          <div><label for="phone">טלפון</label><input id="phone" name="phone" placeholder="05x-xxxxxxx" inputmode="tel" pattern="[0-9\\-\\s+]{7,}" required /></div>
         </div>
         <div class="form-row">
           <div><label for="city">עיר / אזור</label><input id="city" name="city" placeholder="לוד / מרכז" /></div>
-          <div>
-            <label for="service">סוג שירות</label>
+          <div><label for="service">סוג שירות</label>
             <select id="service" name="service">
-              <option>אחזקה שוטפת</option><option>הקמת גינה</option>
-              <option>דשא סינתטי</option><option>גיזום עצים</option>
-              <option>מערכת השקיה</option><option>אחר</option>
+              <option>אחזקה שוטפת</option>
+              <option>הקמת גינה</option>
+              <option>דשא סינתטי</option>
+              <option>גיזום עצים</option>
+              <option>מערכת השקיה</option>
+              <option>אחר</option>
             </select>
           </div>
         </div>
@@ -372,7 +303,7 @@
         <h3 style="margin-top:0">צור קשר</h3>
         <p style="margin:0 0 8px">טלפון/וואטסאפ: <a href="tel:+972534295336">053-429-5336</a></p>
         <p style="margin:0 0 8px">אימייל: <a href="mailto:sbhtk1400@gmail.com">sbhtk1400@gmail.com</a></p>
-        <p style="margin:0 0 8px">אזור פעילות: מרכז ישראל (לוד והסביבה)</p>
+        <p style="margin:0 0 8px">אזור פעילות: לוד • רמלה • באר יעקב והסביבה</p>
         <hr style="border:none;border-top:1px solid #eaf1ec;margin:12px 0"/>
         <h4 style="margin:0 0 8px">למה לבחור בנו?</h4>
         <ul style="margin:0;padding-inline-start:18px;color:var(--muted)">
@@ -387,7 +318,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container inner">
-      <div>© <span id="y"></span> ירוק בעיר — כל הזכויות שמורות</div>
+      <div>© <span id="y"></span> ירוק בעיר — גינון בלוד, רמלה ובאר יעקב | 053-429-5336</div>
       <div style="text-align:center">קישור לגוגל עסקים: <a href="#" aria-label="Google Business">להוספה</a></div>
       <div style="text-align:end"><a href="#contact">לקבלת הצעת מחיר</a></div>
     </div>
@@ -400,103 +331,87 @@
     </a>
   </div>
   <div class="call-bar">
-    <a href="tel:+972534295336">📞 חייג עכשיו</a><span>•</span><a href="https://wa.me/972534295336">שלח הודעה</a>
+    <a href="tel:+972534295336">📞 חייג עכשיו</a>
+    <span>•</span>
+    <a href="https://wa.me/972534295336">שלח הודעה</a>
   </div>
 
-  <!-- MODALS (פופ־אפ גלריה) -->
-  <div class="modal" id="modal-duvdevan" aria-hidden="true">
-    <div class="modal-card">
-      <div class="modal-top">
-        <strong>רחוב דובדבן, לוד — עוד תמונות</strong>
-        <button class="modal-close" data-close>סגירה</button>
-      </div>
-      <div class="modal-grid">
-        <!-- לפני (סט) -->
-        <img src="3e4b3513-5b3a-4f83-8c1b-4871a857d589.jpeg" alt="לפני — תמונה 1">
-        <img src="ff37a9f5-083a-43dd-ad04-7a6dafbe78a2.jpeg" alt="לפני — תמונה 2">
-        <img src="65374acc-445f-4809-997d-b5f498a16832.jpeg" alt="לפני — תמונה 3">
-        <img src="2cdb5319-6227-4dcc-854a-f53b95e2ed94.jpeg" alt="לפני — תמונה 4">
-        <!-- אחרי (סט) -->
-        <img src="IMG-20250925-WA0043.jpg" alt="אחרי — תמונה 1">
-        <img src="IMG-20250925-WA0044.jpg" alt="אחרי — תמונה 2">
-        <img src="IMG-20250925-WA0045.jpg" alt="אחרי — תמונה 3">
-        <img src="IMG-20250925-WA0042.jpg" alt="אחרי — תמונה 4">
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" id="modal-yossi" aria-hidden="true">
-    <div class="modal-card">
-      <div class="modal-top">
-        <strong>שיקום גינה — יוסי (לפני/במהלך/אחרי)</strong>
-        <button class="modal-close" data-close>סגירה</button>
-      </div>
-      <div class="modal-grid">
-        <img src="08f40711-005d-4b48-ac75-56a0366ab002.jpeg" alt="לפני">
-        <img src="27355617-e87d-47c6-9aef-959a033a2705.jpeg" alt="במהלך">
-        <img src="4823e903-b302-4c83-9eee-2655cedf23ff.jpeg" alt="אחרי">
-      </div>
+  <!-- Winter popup (לידים) -->
+  <div id="winterPopup" aria-hidden="true" style="position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.45);z-index:80">
+    <div role="dialog" aria-label="הכנה לחורף" class="card" style="max-width:520px;width:92%;padding:22px;border-radius:20px">
+      <h3 style="margin:0 0 6px">הכנה לחורף: ניקוי עלים, גיזום וסידור ניקוזים</h3>
+      <p style="margin:0 0 10px;color:var(--muted)">דואגים שהגינה תהיה מוכנה לגשם הראשון. קבלו ביקור הערכת מצב ללא התחייבות.</p>
+      <form id="winterForm" class="form" style="padding:0;border:0;box-shadow:none">
+        <div class="form-row">
+          <input name="name" placeholder="שם" required>
+          <input name="phone" placeholder="טלפון" inputmode="tel" required>
+        </div>
+        <button class="btn brand" type="submit">חוזרים אליי להצעת חורף</button>
+        <button type="button" id="winterClose" class="btn ghost" style="margin-inline-start:8px">סגור</button>
+      </form>
     </div>
   </div>
 
   <script>
-    // שנה בפוטר
+    // שנה
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // אנימציית rise
+    // אפקטי עלייה
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} })
     },{threshold:.2});
     document.querySelectorAll('[data-rise]').forEach(el=>io.observe(el));
 
-    // טופס Formspree
+    // טופס ראשי (Formspree)
     const FORM_ENDPOINT = 'https://formspree.io/f/xblppbok';
     const leadForm = document.getElementById('leadForm');
     const statusEl = document.getElementById('formStatus');
-    if (leadForm){
-      leadForm.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        statusEl.textContent = 'שולח...';
-        const data = Object.fromEntries(new FormData(leadForm).entries());
-        try{
-          const res = await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(data)});
-          if(res.ok){ statusEl.style.color='#0a8f47'; statusEl.textContent='נשלח בהצלחה! נחזור אליך בקרוב.'; leadForm.reset(); }
-          else{ throw new Error('HTTP '+res.status); }
-        }catch(err){
-          statusEl.style.color='#b45309';
-          statusEl.innerHTML='תקלה בשליחה. אפשר <a href="mailto:sbhtk1400@gmail.com">לשלוח מייל</a> או <a href="https://wa.me/972534295336">וואטסאפ</a>.';
-        }
-      });
-    }
-
-    // before/after toggles
-    document.querySelectorAll('.work-card').forEach(card=>{
-      const afterImg = card.querySelector('.ba-after');
-      const sw = card.querySelector('[data-switch]');
-      if(!afterImg || !sw) return;
-      sw.addEventListener('click', ()=>{
-        sw.classList.toggle('on');
-        afterImg.style.opacity = sw.classList.contains('on') ? 1 : 0;
-      });
+    leadForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      statusEl.textContent = 'שולח...';
+      const data = Object.fromEntries(new FormData(leadForm).entries());
+      try{
+        const res = await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(data)});
+        if(res.ok){ statusEl.style.color='#0a8f47'; statusEl.textContent='נשלח בהצלחה! נחזור אליך בקרוב.'; leadForm.reset(); }
+        else{ throw new Error('HTTP '+res.status); }
+      }catch(err){
+        statusEl.style.color='#b45309';
+        statusEl.innerHTML='תקלה בשליחה. אפשר <a href="mailto:sbhtk1400@gmail.com">לשלוח מייל</a> או <a href="https://wa.me/972534295336">וואטסאפ</a>.';
+      }
     });
 
-    // modal open/close
-    const openButtons = document.querySelectorAll('[data-open]');
-    openButtons.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const key = btn.getAttribute('data-open');
-        const modal = document.getElementById('modal-'+key);
-        if(modal){ modal.classList.add('show'); modal.setAttribute('aria-hidden','false'); }
-      });
+    // פופ-אפ חורף: נפתח אחרי 12 שנ׳ או בגלילת 60%
+    const winterPopup = document.getElementById('winterPopup');
+    const winterClose = document.getElementById('winterClose');
+    function openWinter(){ if(!sessionStorage.getItem('winterShown')){ winterPopup.style.display='grid'; sessionStorage.setItem('winterShown','1'); } }
+    setTimeout(openWinter, 12000);
+    window.addEventListener('scroll',()=>{ if(window.scrollY > (document.body.scrollHeight*0.6)) openWinter(); }, {passive:true});
+    winterClose.addEventListener('click',()=> winterPopup.style.display='none');
+
+    // שליחת טופס פופ-אפ
+    const winterForm = document.getElementById('winterForm');
+    winterForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(winterForm).entries());
+      data.source='winter-popup';
+      try{
+        await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(data)});
+        winterPopup.style.display='none'; alert('תודה! נחזור אליך להצעת חורף.'); winterForm.reset();
+      }catch(err){ alert('תקלה בשליחה, נסו שוב או צרו קשר בוואטסאפ.'); }
     });
-    document.querySelectorAll('[data-close]').forEach(b=>{
-      b.addEventListener('click', ()=>{
-        const m = b.closest('.modal'); if(m){ m.classList.remove('show'); m.setAttribute('aria-hidden','true'); }
-      });
-    });
-    document.querySelectorAll('.modal').forEach(m=>{
-      m.addEventListener('click', (e)=>{ if(e.target===m){ m.classList.remove('show'); m.setAttribute('aria-hidden','true'); }});
-    });
+  </script>
+
+  <!-- FAQ schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"איפה אתם עובדים?","acceptedAnswer":{"@type":"Answer","text":"בלוד, רמלה, באר יעקב והסביבה (כולל מודיעין והיישובים הסמוכים)."}},
+      {"@type":"Question","name":"אילו שירותים אתם מספקים?","acceptedAnswer":{"@type":"Answer","text":"הקמת גינות, תחזוקה שוטפת, דשא סינתטי, גיזום עצים, ניקוי עלים, תיקוני השקיה והכנה לחורף."}},
+      {"@type":"Question","name":"תוך כמה זמן חוזרים אליי?","acceptedAnswer":{"@type":"Answer","text":"בדרך כלל בתוך 24–48 שעות — לעיתים אף מוקדם יותר."}}
+    ]
+  }
   </script>
 </body>
 </html>
