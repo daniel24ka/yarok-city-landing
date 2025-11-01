@@ -41,8 +41,6 @@
   <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js', new Date());gtag('config','G-XXXXXXXXXX');</script> -->
 
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
-
   <style>
     :root{
       --brand:#1d8348; --brand-2:#27ae60; --ink:#0f172a; --muted:#475569;
@@ -129,6 +127,43 @@
 
     [data-rise]{opacity:0;transform:translateY(12px);transition:.5s ease}
     [data-rise].in{opacity:1;transform:none}
+
+    /* ===== Projects (before/after gallery) ===== */
+    .projects{display:grid;grid-template-columns:1fr;gap:16px}
+    .project-card{background:#fff;border:1px solid #eaf1ec;border-radius:16px;box-shadow:var(--shadow);padding:14px}
+    .project-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+    .project-title{margin:0;font-size:18px}
+    .project-tags{font-size:13px;color:var(--muted)}
+
+    .ba-wrapper{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#e6efe8}
+    .ba-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;user-select:none;pointer-events:none}
+    .ba-before{clip-path:inset(0 50% 0 0)}
+    .ba-after{clip-path:inset(0 0 0 0)}
+    .ba-handle{position:absolute;inset:0 auto;left:50%;width:3px;background:#ffffff;box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+    .ba-handle::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.9);box-shadow:var(--shadow)}
+    .ba-label{position:absolute;top:10px;padding:6px 10px;border-radius:999px;font-weight:800;font-size:13px;background:rgba(255,255,255,.85);box-shadow:var(--shadow)}
+    .ba-label-before{inset-inline-start:10px}
+    .ba-label-after{inset-inline-end:10px}
+
+    .more-btn{white-space:nowrap}
+
+    /* Lightbox */
+    .lightbox[hidden]{display:none}
+    .lightbox{position:fixed;inset:0;z-index:100}
+    .lightbox-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.5)}
+    .lightbox-body{position:relative;max-width:min(1080px,94vw);height:min(86vh,820px);margin:4vh auto;background:#fff;border-radius:16px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .lightbox-head{padding:10px 12px;border-bottom:1px solid #e8efe8;display:flex;justify-content:space-between;align-items:center}
+    .lb-close{background:#f1f5f2;border:0;border-radius:8px;padding:6px 10px;cursor:pointer}
+    .lightbox-main{position:relative;display:grid;place-items:center;flex:1;background:#000}
+    #lbImage{max-width:100%;max-height:100%;object-fit:contain}
+    .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.85);border:0;border-radius:10px;padding:8px 12px;font-size:28px;cursor:pointer}
+    .lb-nav.prev{left:8px}
+    .lb-nav.next{right:8px}
+    .lightbox-foot{padding:8px 12px;border-top:1px solid #e8efe8;font-size:13px;color:var(--muted);text-align:center}
+
+    @media (max-width: 640px){
+      .project-head{flex-direction:column;align-items:flex-start}
+    }
   </style>
 
   <!-- LocalBusiness schema (עודכן לאזורי שירות) -->
@@ -228,15 +263,81 @@
     </div>
   </section>
 
-  <!-- WORK -->
+  <!-- WORK: גלריית לפני/אחרי + מודל -->
   <section id="work" class="section">
     <div class="container">
-      <h2 data-rise>עבודות נבחרות</h2>
-      <p class="lead" data-rise style="transition-delay:.08s">לפני/אחרי ותמונות מהשטח. אפשר להחליף לתמונות הפרויקטים שלך (כולל דובדבן, לוד).</p>
-      <div class="grid">
-        <img data-rise src="https://images.unsplash.com/photo-1525498128493-380d1990a112?q=80&w=1200&auto=format&fit=crop" alt="התקנת דשא" width="1200" height="800" decoding="async" loading="lazy"/>
-        <img data-rise style="transition-delay:.05s" src="https://images.unsplash.com/photo-1504648647358-9e7ddb22b309?q=80&w=1200&auto=format&fit=crop" alt="גינה פרטית" width="1200" height="800" decoding="async" loading="lazy"/>
-        <img data-rise style="transition-delay:.1s" src="https://images.unsplash.com/photo-1458134580443-fbb0743304fe?q=80&w=1200&auto=format&fit=crop" alt="טיפוח ערוגות" width="1200" height="800" decoding="async" loading="lazy"/>
+      <h2 data-rise>עבודות נבחרות — לפני/אחרי</h2>
+      <p class="lead" data-rise style="transition-delay:.08s">השוואת לפני/אחרי לכל פרויקט וגלריה מורחבת בלחיצה.</p>
+
+      <div class="projects">
+        <!-- פרויקט 1: יוסי, לוד -->
+        <article class="project-card" data-rise>
+          <header class="project-head">
+            <div>
+              <h3 class="project-title">חצר יוסי — לוד</h3>
+              <div class="project-tags">ניקוי עומק · גיזום · ריסוס נגד עשבייה</div>
+            </div>
+            <button class="btn ghost more-btn"
+                    data-title="חצר יוסי — לוד"
+                    data-images="08f40711-005d-4b48-ac75-56a0366ab002.jpeg,27355617-e87d-47c6-9aef-959a033a2705.jpeg,4823e903-b302-4c83-9eee-2655cedf23ff.jpeg">
+              עוד תמונות
+            </button>
+          </header>
+          <div class="ba-wrapper" dir="ltr"
+               data-before="08f40711-005d-4b48-ac75-56a0366ab002.jpeg"
+               data-after="4823e903-b302-4c83-9eee-2655cedf23ff.jpeg"
+               aria-label="השוואת לפני ואחרי — חצר יוסי בלוד">
+            <img class="ba-img ba-before" loading="lazy" alt="לפני — חצר יוסי, לוד">
+            <img class="ba-img ba-after"  loading="lazy" alt="אחרי — חצר יוסי, לוד">
+            <div class="ba-handle" role="separator" aria-orientation="vertical" aria-label="גרור להשוואה"></div>
+            <div class="ba-label ba-label-before">לפני</div>
+            <div class="ba-label ba-label-after">אחרי</div>
+          </div>
+        </article>
+
+        <!-- פרויקט 2: רח׳ דובדבן, לוד (הכנה לחורף) -->
+        <article class="project-card" data-rise style="transition-delay:.06s">
+          <header class="project-head">
+            <div>
+              <h3 class="project-title">רח׳ דובדבן — לוד (הכנה לחורף)</h3>
+              <div class="project-tags">גיזום עצים · ניקוי עלים · תחזוקת דשא סינתטי · הכנה לחורף</div>
+            </div>
+            <button class="btn ghost more-btn"
+                    data-title="רח׳ דובדבן — לוד"
+                    data-images="3e4b3513-5b3a-4f83-8c1b-4871a857d589.jpeg,ff37a9f5-083a-43dd-ad04-7a6dafbe78a2.jpeg,65374acc-445f-4809-997d-b5f498a16832.jpeg,2cdb5319-6227-4dcc-854a-f53b95e2ed94.jpeg,3a27ccdf-283e-40f2-afb1-d5cc488accee.jpeg,bdefaf29-6479-495a-9d43-5425146e7aba.jpeg,IMG-20250925-WA0042.jpg,IMG-20250925-WA0043.jpg,IMG-20250925-WA0044.jpg,IMG-20250925-WA0045.jpg">
+              עוד תמונות
+            </button>
+          </header>
+          <div class="ba-wrapper" dir="ltr"
+               data-before="IMG-20250925-WA0045.jpg"
+               data-after="IMG-20250925-WA0042.jpg"
+               aria-label="השוואת לפני ואחרי — רח׳ דובדבן, לוד">
+            <img class="ba-img ba-before" loading="lazy" alt="לפני — רח׳ דובדבן, לוד">
+            <img class="ba-img ba-after"  loading="lazy" alt="אחרי — רח׳ דובדבן, לוד">
+            <div class="ba-handle" role="separator" aria-orientation="vertical" aria-label="גרור להשוואה"></div>
+            <div class="ba-label ba-label-before">לפני</div>
+            <div class="ba-label ba-label-after">אחרי</div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- מודל גלריה -->
+    <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" hidden>
+      <div class="lightbox-backdrop" data-close></div>
+      <div class="lightbox-body" role="document">
+        <header class="lightbox-head">
+          <div class="lightbox-title" id="lbTitle">גלריה</div>
+          <button class="lb-close" aria-label="סגור" data-close>✕</button>
+        </header>
+        <div class="lightbox-main">
+          <button class="lb-nav prev" aria-label="התמונה הקודמת">‹</button>
+          <img id="lbImage" alt="תמונת גלריה">
+          <button class="lb-nav next" aria-label="התמונה הבאה">›</button>
+        </div>
+        <footer class="lightbox-foot">
+          <div id="lbCounter">1 / 1</div>
+        </footer>
       </div>
     </div>
   </section>
@@ -277,7 +378,7 @@
         <p class="lead" style="margin-top:-6px">ממלאים 20 שניות ושולחים — חוזרים אליך בהקדם.</p>
         <div class="form-row">
           <div><label for="name">שם מלא</label><input id="name" name="name" placeholder="שם" required /></div>
-          <div><label for="phone">טלפון</label><input id="phone" name="phone" placeholder="05x-xxxxxxx" inputmode="tel" pattern="[0-9\\-\\s+]{7,}" required /></div>
+          <div><label for="phone">טלפון</label><input id="phone" name="phone" placeholder="05x-xxxxxxx" inputmode="tel" pattern="[0-9\-\s+]{7,}" required /></div>
         </div>
         <div class="form-row">
           <div><label for="city">עיר / אזור</label><input id="city" name="city" placeholder="לוד / מרכז" /></div>
@@ -399,6 +500,110 @@
         winterPopup.style.display='none'; alert('תודה! נחזור אליך להצעת חורף.'); winterForm.reset();
       }catch(err){ alert('תקלה בשליחה, נסו שוב או צרו קשר בוואטסאפ.'); }
     });
+
+    /* ==== Before/After init ==== */
+    function initBeforeAfter() {
+      document.querySelectorAll('.ba-wrapper').forEach(wrapper=>{
+        const beforeSrc = wrapper.getAttribute('data-before');
+        const afterSrc  = wrapper.getAttribute('data-after');
+        const beforeImg = wrapper.querySelector('.ba-before');
+        const afterImg  = wrapper.querySelector('.ba-after');
+        const handle    = wrapper.querySelector('.ba-handle');
+
+        beforeImg.src = beforeSrc;
+        afterImg.src  = afterSrc;
+
+        const setSplit = (xPct)=>{
+          xPct = Math.max(0, Math.min(100, xPct));
+          beforeImg.style.clipPath = `inset(0 ${100-xPct}% 0 0)`;
+          handle.style.left = `${xPct}%`;
+        };
+
+        let active = false;
+        const start = (e)=>{active=true; move(e); e.preventDefault();};
+        const end   = ()=>{active=false;};
+        const move  = (e)=>{
+          if(!active) return;
+          const rect = wrapper.getBoundingClientRect();
+          const clientX = (e.touches && e.touches[0]?.clientX) || e.clientX;
+          const x = clientX - rect.left;
+          const pct = (x / rect.width) * 100;
+          setSplit(pct);
+        };
+
+        // התחלה באמצע
+        setSplit(50);
+
+        handle.addEventListener('mousedown', start);
+        window.addEventListener('mouseup', end);
+        window.addEventListener('mousemove', move);
+        handle.addEventListener('touchstart', start, {passive:false});
+        window.addEventListener('touchend', end);
+        window.addEventListener('touchmove', move, {passive:false});
+      });
+    }
+
+    /* ==== Lightbox ==== */
+    (function(){
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lbImage');
+      const titleEl = document.getElementById('lbTitle');
+      const counter = document.getElementById('lbCounter');
+      const prevBtn = lb.querySelector('.lb-nav.prev');
+      const nextBtn = lb.querySelector('.lb-nav.next');
+
+      let list = [];
+      let idx = 0;
+
+      function open(images, title, startIndex=0){
+        list = images;
+        idx = startIndex;
+        titleEl.textContent = title || 'גלריה';
+        render();
+        lb.hidden = false;
+        document.body.style.overflow = 'hidden';
+      }
+      function close(){
+        lb.hidden = true;
+        document.body.style.overflow = '';
+      }
+      function render(){
+        img.src = list[idx];
+        img.alt = `${titleEl.textContent} — תמונה ${idx+1}`;
+        counter.textContent = `${idx+1} / ${list.length}`;
+      }
+      function next(){ idx = (idx+1) % list.length; render(); }
+      function prev(){ idx = (idx-1+list.length) % list.length; render(); }
+
+      // האזנות
+      document.querySelectorAll('.more-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const title = btn.dataset.title || 'גלריה';
+          const images = (btn.dataset.images || '')
+            .split(',')
+            .map(s=>s.trim())
+            .filter(Boolean);
+          open(images, title, 0);
+        });
+      });
+
+      lb.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click', close));
+      nextBtn.addEventListener('click', next);
+      prevBtn.addEventListener('click', prev);
+      document.addEventListener('keydown', (e)=>{
+        if(lb.hidden) return;
+        if(e.key === 'Escape') close();
+        if(e.key === 'ArrowRight') next();
+        if(e.key === 'ArrowLeft') prev();
+      });
+
+      // INIT after DOM ready
+      if(document.readyState !== 'loading') {
+        initBeforeAfter();
+      } else {
+        document.addEventListener('DOMContentLoaded', initBeforeAfter);
+      }
+    })();
   </script>
 
   <!-- FAQ schema -->
