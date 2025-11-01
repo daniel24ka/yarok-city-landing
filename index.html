@@ -6,26 +6,20 @@
   <title>ירוק בעיר — הקמה, תחזוקה ודשא סינתטי | צור קשר עכשיו</title>
   <meta name="description" content="ירוק בעיר — הקמת גינות, תחזוקת גינות, דשא סינתטי, גיזום עצים ומערכות השקיה. מקצועיות, אמינות, וזמינות מהירה. השאר פרטים ונחזור אליך." />
   <meta name="format-detection" content="telephone=no" />
-  <!-- favicon (העלה קובץ בשם: שלט ירוק בעיר.png) -->
+  <!-- favicon -->
   <link rel="icon" href="שלט ירוק בעיר.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --brand:#1d8348; /* ירוק עמוק */
-      --brand-2:#27ae60; /* ירוק רענן */
-      --ink:#0f172a; /* slate-900 */
-      --muted:#475569; /* slate-600 */
-      --bg:#f5f7f5; /* רקע רך */
-      --card:#ffffff;
-      --accent:#c2fbd7;
-      --danger:#e11d48;
-      --radius:18px;
-      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --brand:#1d8348; --brand-2:#27ae60; --ink:#0f172a; --muted:#475569;
+      --bg:#f5f7f5; --card:#ffffff; --accent:#c2fbd7; --danger:#e11d48;
+      --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.08);
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Heebo,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+      font-family:Heebo,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;}
     a{color:var(--brand-2);text-decoration:none}
     img{max-width:100%;display:block;border-radius:12px}
     .container{max-width:1120px;margin-inline:auto;padding:0 20px}
@@ -65,7 +59,14 @@
     .service h3{margin:0;font-size:17px}
     .service p{margin:0;color:var(--muted);font-size:14px}
 
-    /* GRID */
+    /* WORK (gallery) */
+    .projects{display:grid;grid-template-columns:1fr;gap:16px}
+    .project{background:#fff;border:1px solid #eaf1ec;border-radius:18px;box-shadow:var(--shadow);padding:14px}
+    .project h3{margin:0 0 6px;font-size:18px}
+    .project .meta{color:var(--muted);font-size:13px;margin-bottom:10px}
+    .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .pair figure{position:relative;margin:0}
+    .tag{position:absolute;inset-inline-start:10px;inset-block-start:10px;background:rgba(0,0,0,.7);color:#fff;font-weight:800;font-size:12px;padding:6px 10px;border-radius:999px}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 
     /* TESTIMONIAL */
@@ -74,7 +75,7 @@
     .stars{color:#f59e0b;font-size:16px}
 
     /* CTA */
-    .cta{background:linear-gradient(135deg,var(--brand),#0ea24b);color:#fff;border-radius:20px;padding:24px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;גב:10px}
+    .cta{background:linear-gradient(135deg,var(--brand),#0ea24b);color:#fff;border-radius:20px;padding:24px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:10px}
 
     /* CONTACT */
     .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
@@ -97,14 +98,16 @@
     .call-bar a{color:#fff;font-weight:800}
 
     /* responsive */
-    @media (max-width: 1024px){
+    @media (max-width:1024px){
       .hero .inner{grid-template-columns:1fr;}
       .services{grid-template-columns:repeat(3,1fr)}
       .contact{grid-template-columns:1fr}
       .cta{grid-template-columns:1fr}
       .footer .inner{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .pair{grid-template-columns:1fr}
     }
-    @media (max-width: 640px){
+    @media (max-width:640px){
       .services{grid-template-columns:repeat(2,1fr)}
       .grid{grid-template-columns:1fr}
       .kpis{grid-template-columns:repeat(3,1fr)}
@@ -176,6 +179,7 @@
       </div>
       <div>
         <div class="hero-card glass">
+          <!-- אפשר להשאיר תמונות השראה כלליות בחלק העליון -->
           <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1400&auto=format&fit=crop" alt="גינה ירוקה מטופחת"/>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
             <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=1200&auto=format&fit=crop" alt="דשא סינתטי"/>
@@ -229,21 +233,60 @@
   <!-- WORK -->
   <section id="work" class="section">
     <div class="container">
-      <h2 data-rise>עבודות נבחרות</h2>
-      <p class="lead" data-rise style="transition-delay:.08s">לפני / במהלך / אחרי — חצר של יוסי בלוד</p>
-      <div class="grid">
-        <figure data-rise>
-          <img src="08f40711-005d-4b48-ac75-56a0366ab002.jpeg" alt="לפני — גינה מוזנחת אצל יוסי, עשבייה גבוהה וצמחייה פראית" loading="lazy"/>
-          <figcaption style="margin-top:6px;color:var(--muted);font-size:14px">יוסי, לוד — <strong>לפני</strong>: גינה שלא טופלה כמה שנים</figcaption>
-        </figure>
-        <figure data-rise style="transition-delay:.06s">
-          <img src="27355617-e87d-47c6-9aef-959a033a2705.jpeg" alt="במהלך — ניקוי, קיצוץ ופינוי עשבייה; מתחם עבודה מסודר" loading="lazy"/>
-          <figcaption style="margin-top:6px;color:var(--muted);font-size:14px">יוסי, לוד — <strong>במהלך</strong>: ניקוי, גיזום ופינוי</figcaption>
-        </figure>
-        <figure data-rise style="transition-delay:.12s">
-          <img src="4823e903-b302-4c83-9eee-2655cedf23ff.jpeg" alt="אחרי — חצר נקייה ומוכנה למנגל; לאחר ריסוס לעיכוב עשבייה" loading="lazy"/>
-          <figcaption style="margin-top:6px;color:var(--muted);font-size:14px">יוסי, לוד — <strong>אחרי</strong>: חצר מוכנה למנגל + ריסוס לעיכוב עשבייה</figcaption>
-        </figure>
+      <h2 data-rise>עבודות נבחרות (לפני/אחרי)</h2>
+      <p class="lead" data-rise style="transition-delay:.08s">תיעוד אמיתי מהשטח: תחזוקה, ניקוי עומק, הכנה לחורף ודשא סינתטי.</p>
+
+      <div class="projects">
+
+        <!-- פרויקט: יוסי – ניקוי עומק והחזרת חצר לשימוש -->
+        <article class="project" data-rise>
+          <h3>יוסי – חצר מוזנחת שהפכה לשטח נקי ושימושי</h3>
+          <div class="meta">שירות: ניקוי עומק, פינוי עשבייה, ריסוס להאטת צמיחה</div>
+          <div class="pair">
+            <figure>
+              <img loading="lazy" src="08f40711-005d-4b48-ac75-56a0366ab002.jpeg" alt="יוסי – לפני, חצר מלאה בעשבייה גבוהה" />
+              <span class="tag">לפני</span>
+            </figure>
+            <figure>
+              <img loading="lazy" src="4823e903-b302-4c83-9eee-2655cedf23ff.jpeg" alt="יוסי – אחרי, חצר נקייה מסודרת ומוכנה למנגל" />
+              <span class="tag">אחרי</span>
+            </figure>
+          </div>
+          <div class="grid" style="margin-top:12px">
+            <img loading="lazy" src="27355617-e87d-47c6-9aef-959a033a2705.jpeg" alt="יוסי – במהלך העבודה, הסרת עשבייה" />
+          </div>
+        </article>
+
+        <!-- פרויקט: דובדבן, לוד – תחזוקה והכנה לחורף -->
+        <article class="project" data-rise style="transition-delay:.05s">
+          <h3>רח׳ דובדבן, לוד — תחזוקה והכנה לחורף</h3>
+          <div class="meta">שירות: ניקוי עלים, גיזום, סידור ערוגות, רענון שולי הדשא</div>
+
+          <div class="pair">
+            <figure>
+              <img loading="lazy" src="3e4b3513-5b3a-4f83-8c1b-4871a857d589.jpeg" alt="דובדבן לוד – לפני: הצטברות עלים ועשבייה סביב הדשא" />
+              <span class="tag">לפני</span>
+            </figure>
+            <figure>
+              <img loading="lazy" src="IMG-20250925-WA0043.jpg" alt="דובדבן לוד – אחרי: דשא נקי, שולי ערוגות מסודרים" />
+              <span class="tag">אחרי</span>
+            </figure>
+          </div>
+
+          <div class="grid" style="margin-top:12px">
+            <!-- תמונות נוספות לפני -->
+            <img loading="lazy" src="ff37a9f5-083a-43dd-ad04-7a6dafbe78a2.jpeg" alt="לפני – עלים יבשים על הדשא" />
+            <img loading="lazy" src="65374acc-445f-4809-997d-b5f498a16832.jpeg" alt="לפני – עשבייה בשולי הערוגות" />
+            <img loading="lazy" src="2cdb5319-6227-4dcc-854a-f53b95e2ed94.jpeg" alt="לפני – אזורים מוצפים בעלים" />
+
+            <!-- תמונות אחרי -->
+            <img loading="lazy" src="IMG-20250925-WA0044.jpg" alt="אחרי – שביל צד נקי ומטופח" />
+            <img loading="lazy" src="IMG-20250925-WA0045.jpg" alt="אחרי – חצר אחורית נקייה ומוכנה לחורף" />
+            <img loading="lazy" src="IMG-20250925-WA0042.jpg" alt="אחרי – אזור ישיבה מסודר על דשא סינתטי" />
+          </div>
+        </article>
+
+        <!-- אפשרות לעוד כרטיס פרויקט בעתיד -->
       </div>
     </div>
   </section>
