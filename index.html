@@ -16,15 +16,6 @@
   <!-- Theme color -->
   <meta name="theme-color" content="#1d8348" />
 
-  <!-- Fonts: performance -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap"></noscript>
-
-  <!-- Preload LCP image (hero) -->
-  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1400&auto=format&fit=crop">
-
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="he_IL">
@@ -58,6 +49,10 @@
     .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
     .btn.brand{background:linear-gradient(135deg,var(--brand-2),var(--brand));color:#fff}
     .btn.ghost{background:#f1f5f2;color:var(--ink)}
+    /* small Instagram glyph */
+    .ig-icon{width:18px;height:18px;display:inline-block;border-radius:4px;background:
+      radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);}
+    .btn.ig{gap:6px}
 
     /* HERO */
     .hero{position:relative;overflow:hidden}
@@ -153,7 +148,7 @@
     }
   </style>
 
-  <!-- LocalBusiness schema (עודכן לאזורי שירות) -->
+  <!-- LocalBusiness schema (עודכן לאזורי שירות + אינסטגרם) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -164,7 +159,7 @@
     "address": {"@type":"PostalAddress","addressLocality":"לוד","addressCountry":"IL"},
     "areaServed": ["לוד","רמלה","באר יעקב"],
     "url": "https://daniel24ka.github.io/yarok-city-landing/",
-    "sameAs": []
+    "sameAs": ["https://www.instagram.com/citygreen_il/"]
   }
   </script>
 </head>
@@ -183,6 +178,9 @@
       <div class="nav-cta">
         <a class="btn ghost" href="#work">עבודות</a>
         <a class="btn ghost" href="#services">שירותים</a>
+        <a class="btn ig" href="https://www.instagram.com/citygreen_il/" target="_blank" rel="noopener">
+          <span class="ig-icon" aria-hidden="true"></span> אינסטגרם
+        </a>
         <a class="btn brand" href="#contact">לקבלת הצעת מחיר</a>
       </div>
     </div>
@@ -220,13 +218,11 @@
              alt="גינה מטופחת לאחר שיפוץ" 
              loading="eager" 
              style="width:100%;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.1);" />
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
-        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px"></div>
       </div>
     </div>
   </div>
 </header>
-
 
   <!-- SERVICES -->
   <section id="services" class="section">
@@ -389,7 +385,10 @@
   <footer class="footer">
     <div class="container inner">
       <div>© <span id="y"></span> ירוק בעיר — גינון בלוד, רמלה ובאר יעקב | 053-429-5336</div>
-      <div style="text-align:center">קישור לגוגל עסקים: <a href="#" aria-label="Google Business">להוספה</a></div>
+      <div style="text-align:center">
+        ראו עוד עבודות באינסטגרם:
+        <a href="https://www.instagram.com/citygreen_il/" target="_blank" rel="noopener">@citygreen_il</a>
+      </div>
       <div style="text-align:end"><a href="#contact">לקבלת הצעת מחיר</a></div>
     </div>
   </footer>
@@ -490,7 +489,6 @@
     document.querySelectorAll('[data-compare]').forEach(setupCompare);
     function setupCompare(wrapper){
       const scrim = wrapper.querySelector('.scrim');
-      const afterImg = wrapper.querySelector('.after');
       const setPos = (px)=>{
         const rect = wrapper.getBoundingClientRect();
         const x = Math.max(0, Math.min(px - rect.left, rect.width));
@@ -509,7 +507,7 @@
       window.addEventListener('touchend', ()=> dragging=false);
       // Keyboard
       scrim.addEventListener('keydown',(e)=>{
-        const step = (e.shiftKey? 10: 2); // Shift = מהירות
+        const step = (e.shiftKey? 10: 2);
         const style = getComputedStyle(wrapper).getPropertyValue('--pos').trim();
         const val = parseFloat(style);
         let next = val;
@@ -518,7 +516,6 @@
         wrapper.style.setProperty('--pos', next + '%');
         scrim.setAttribute('aria-valuenow', Math.round(next));
       });
-      // Reflow on resize
       new ResizeObserver(()=>{}).observe(wrapper);
     }
 
