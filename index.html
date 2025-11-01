@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ירוק בעיר — הקמה, תחזוקה ודשא סינתטי | צור קשר עכשיו</title>
+  <meta name="description" content="ירוק בעיר — הקמת גינות, תחזוקת גינות, דשא סינתטי, גיזום עצים ומערכות השקיה. מקצועיות, אמינות, וזמינות מהירה. השאר פרטים ונחזור אליך." />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#1d8348; /* ירוק עמוק */
+      --brand-2:#27ae60; /* ירוק רענן */
+      --ink:#0f172a; /* slate-900 */
+      --muted:#475569; /* slate-600 */
+      --bg:#f5f7f5; /* רקע רך */
+      --card:#ffffff;
+      --accent:#c2fbd7; 
+      --danger:#e11d48;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Heebo,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;}
+    a{color:var(--brand-2);text-decoration:none}
+    img{max-width:100%;display:block;border-radius:12px}
+    .container{max-width:1120px;margin-inline:auto;padding:0 20px}
+    .nav{position:sticky;top:0;background:#fff;z-index:50;border-bottom:1px solid #edf2ef}
+    .nav .inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .logo{display:flex;gap:10px;align-items:center;font-weight:800}
+    .logo-badge{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--brand),#15803d);display:grid;place-items:center;color:#fff;font-weight:800;box-shadow:var(--shadow)}
+    .nav-cta{display:flex;gap:10px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;font-weight:700;border:0;cursor:pointer;transition:.2s box-shadow,.2s transform}
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+    .btn.brand{background:linear-gradient(135deg,var(--brand-2),var(--brand));color:#fff}
+    .btn.ghost{background:#f1f5f2;color:var(--ink)}
+
+    .hero{position:relative;overflow:hidden}
+    .hero .inner{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;padding:36px 0}
+    .hero h1{font-size: clamp(28px, 4vw, 46px);line-height:1.1;margin:0 0 10px}
+    .hero p{font-size: clamp(16px, 2.2vw, 18px);color:var(--muted);margin:0 0 18px}
+    .hero .badges{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 22px}
+    .chip{background:#e7f8ee;border:1px solid #c7efd9;color:#0d5132;padding:8px 12px;border-radius:999px;font-weight:700;font-size:13px}
+    .glass{background:rgba(255,255,255,.55);backdrop-filter:blur(6px);border:1px solid #e6efe8;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero-card{padding:18px}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+    .kpi{padding:14px;text-align:center;border-radius:14px;background:#fff;border:1px solid #eff4f0}
+    .kpi .num{font-size:22px;font-weight:800;color:var(--brand)}
+
+    .section{padding:32px 0}
+    .section h2{font-size: clamp(22px,3.2vw,34px);margin:0 0 8px}
+    .section p.lead{color:var(--muted);margin:0 0 24px}
+
+    .services{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+    .service{background:var(--card);border:1px solid #eaf1ec;border-radius:16px;padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+    .service .icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#d1fae5,#86efac);display:grid;place-items:center;font-size:22px}
+    .service h3{margin:0;font-size:17px}
+    .service p{margin:0;color:var(--muted);font-size:14px}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+    .testimonial{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #eaf1ec;border-radius:16px;padding:16px}
+    .avatar{width:46px;height:46px;border-radius:50%;background:#e2f7ec;display:grid;place-items:center;font-weight:800;color:#0d5132}
+    .stars{color:#f59e0b;font-size:16px}
+
+    .cta{background:linear-gradient(135deg,var(--brand),#0ea24b);color:#fff;border-radius:20px;padding:24px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:10px}
+
+    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+    form{background:#fff;border:1px solid #eaf1ec;border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+    label{font-weight:700;font-size:14px;margin-bottom:6px;display:block}
+    input,select,textarea{width:100%;padding:12px 14px;border:1px solid #e3ebe5;border-radius:12px;background:#f9fbf9;font-size:15px}
+    textarea{min-height:110px;resize:vertical}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .submit{margin-top:10px}
+
+    .card{background:#fff;border:1px solid #eaf1ec;border-radius:18px;padding:16px;box-shadow:var(--shadow)}
+
+    .footer{color:#dbe7df;background:#0b2f1f;margin-top:24px}
+    .footer .inner{padding:18px 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:center}
+    .footer a{color:#bbf7d0}
+
+    /* floating actions */
+    .float-wa{position:fixed;inset-inline-start:16px;inset-block-end:16px;z-index:60}
+    .float-wa a{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 16px;border-radius:999px;font-weight:800;box-shadow:var(--shadow)}
+    .call-bar{position:fixed;inset-inline:0;inset-block-end:0;background:#0a8f47;color:#fff;display:none;justify-content:center;gap:12px;padding:10px 16px;z-index:60}
+    .call-bar a{color:#fff;font-weight:800}
+
+    /* responsive */
+    @media (max-width: 1024px){
+      .hero .inner{grid-template-columns:1fr;}
+      .services{grid-template-columns:repeat(3,1fr)}
+      .contact{grid-template-columns:1fr}
+      .cta{grid-template-columns:1fr}
+      .footer .inner{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .services{grid-template-columns:repeat(2,1fr)}
+      .grid{grid-template-columns:1fr}
+      .kpis{grid-template-columns:repeat(3,1fr)}
+      .call-bar{display:flex}
+      .nav .inner{gap:10px}
+      .nav-cta{display:none}
+    }
+    /* tiny motion */
+    [data-rise]{opacity:0;transform:translateY(12px);transition:.5s ease}
+    [data-rise].in{opacity:1;transform:none}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "ירוק בעיר",
+    "image": "",
+    "telephone": "+972-53-429-5336",
+    "address": {"@type":"PostalAddress","addressLocality":"לוד","addressCountry":"IL"},
+    "areaServed": "מרכז ישראל",
+    "url": "",
+    "sameAs": []
+  }
+  </script>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container inner">
+      <div class="logo" aria-label="ירוק בעיר">
+        <div class="logo-badge">🌿</div>
+        <div>
+          <div style="font-size:18px;line-height:1">ירוק בעיר</div>
+          <div style="font-size:12px;color:var(--muted)">הקמה • אחזקה • דשא סינתטי</div>
+        </div>
+      </div>
+      <div class="nav-cta">
+        <a class="btn ghost" href="#work">עבודות</a>
+        <a class="btn ghost" href="#services">שירותים</a>
+        <a class="btn brand" href="#contact">לקבלת הצעת מחיר</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container inner">
+      <div>
+        <h1 data-rise>הטבע חוזר לעיר — <br/>דשא ירוק, גינה מטופחת, ראש שקט</h1>
+        <p data-rise style="transition-delay:.08s">הקמת גינות, תחזוקה שוטפת, דשא סינתטי באיכות גבוהה, גיזום עצים ומערכות השקיה חכמות. איכות ללא פשרות, שירות מהיר ואמין.</p>
+        <div class="badges">
+          <span class="chip">✔️ אחריות ושקיפות מלאה</span>
+          <span class="chip">🚚 זמינות מהירה במרכז</span>
+          <span class="chip">⭐ לקוחות מרוצים וממליצים</span>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn brand" href="https://wa.me/972534295336?text=%D7%94%D7%99%D7%99%20%D7%99%D7%A8%D7%95%D7%A7%20%D7%91%D7%A2%D7%99%D7%A8%2C%20%D7%A6%D7%A8%D7%99%D7%9A%2F%D7%94%20%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8">שלחו לי וואטסאפ</a>
+          <a class="btn ghost" href="#contact">טופס מהיר להצעת מחיר</a>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><div class="num">+100</div><div>פרויקטים וגינות שטופלו</div></div>
+          <div class="kpi"><div class="num">24–48ש׳</div><div>זמן תגובה ממוצע</div></div>
+          <div class="kpi"><div class="num">5★</div><div>שביעות רצון לקוחות</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="hero-card glass">
+          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1400&auto=format&fit=crop" alt="גינה ירוקה מטופחת"/>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+            <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=1200&auto=format&fit=crop" alt="דשא סינתטי"/>
+            <img src="https://images.unsplash.com/photo-1465922615491-b2c4f38df8d8?q=80&w=1200&auto=format&fit=crop" alt="מערכת השקיה"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="container">
+      <h2 data-rise>שירותים מובילים</h2>
+      <p class="lead" data-rise style="transition-delay:.08s">כל פתרונות הגינון תחת קורת גג אחת — הקמה, תחזוקה ושדרוג חכם.</p>
+      <div class="services">
+        <article class="service" data-rise>
+          <div class="icon">🏡</div>
+          <h3>הקמת גינות</h3>
+          <p>תכנון וביצוע מלא: צמחייה, תשתיות, תאורה, שבילים ועיצוב.</p>
+        </article>
+        <article class="service" data-rise style="transition-delay:.05s">
+          <div class="icon">🧰</div>
+          <h3>אחזקה שוטפת</h3>
+          <p>גיזום, ניקיון, דישון, הדברת עשבים וליטוש מראה הגינה.</p>
+        </article>
+        <article class="service" data-rise style="transition-delay:.1s">
+          <div class="icon">🌱</div>
+          <h3>דשא סינתטי</h3>
+          <p>אספקה והתקנה מדויקת עם תשתית וניקוז מקצועיים.</p>
+        </article>
+        <article class="service" data-rise style="transition-delay:.15s">
+          <div class="icon">🌳</div>
+          <h3>גיזום ועצי נוי</h3>
+          <p>גיזום בטיחותי ואסתטי, פינוי ענפים וניקיון מלא בסיום.</p>
+        </article>
+        <article class="service" data-rise style="transition-delay:.2s">
+          <div class="icon">💧</div>
+          <h3>מערכות השקיה</h3>
+          <p>תכנון חכם, טיימרים ובקרה לחיסכון במים ובעלויות.</p>
+        </article>
+        <article class="service" data-rise style="transition-delay:.25s">
+          <div class="icon">🪴</div>
+          <h3>שדרוגים ושיפורים</h3>
+          <p>חיפויי קרקע, ערוגות, אבני מדרך, ניקיון עומק והחזרת הירוק.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="section">
+    <div class="container">
+      <h2 data-rise>עבודות נבחרות</h2>
+      <p class="lead" data-rise style="transition-delay:.08s">לפני/אחרי ותמונות מהשטח. ניתן להחליף את התמונות לתמונות הפרויקטים שלך.</p>
+      <div class="grid">
+        <img data-rise src="https://images.unsplash.com/photo-1525498128493-380d1990a112?q=80&w=1200&auto=format&fit=crop" alt="התקנת דשא"/>
+        <img data-rise style="transition-delay:.05s" src="https://images.unsplash.com/photo-1504648647358-9e7ddb22b309?q=80&w=1200&auto=format&fit=crop" alt="גינה פרטית"/>
+        <img data-rise style="transition-delay:.1s" src="https://images.unsplash.com/photo-1458134580443-fbb0743304fe?q=80&w=1200&auto=format&fit=crop" alt="טיפוח ערוגות"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <h2 data-rise>מה הלקוחות אומרים</h2>
+      <div class="grid" style="margin-top:10px">
+        <div class="testimonial" data-rise>
+          <div class="avatar">א</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <p style="margin:6px 0 0">"שירות מקצועי ומהיר. הגינה נראית סוף הדרך! ממליצה בחום."</p>
+            <div style="color:var(--muted);font-size:13px;margin-top:4px">אורית, לוד</div>
+          </div>
+        </div>
+        <div class="testimonial" data-rise style="transition-delay:.05s">
+          <div class="avatar">י</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <p style="margin:6px 0 0">"דשא סינתטי איכותי והתקנה מדויקת. עמדו בזמנים והשאירו נקי."</p>
+            <div style="color:var(--muted);font-size:13px;margin-top:4px">יוסי, רמלה</div>
+          </div>
+        </div>
+        <div class="testimonial" data-rise style="transition-delay:.1s">
+          <div class="avatar">ד</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <p style="margin:6px 0 0">"תחזוקה שוטפת ברמה גבוהה. יחס אישי וסופר אמין."</p>
+            <div style="color:var(--muted);font-size:13px;margin-top:4px">דנה, תל אביב</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="section">
+    <div class="container">
+      <div class="cta" data-rise>
+        <div>
+          <h3 style="margin:0 0 4px">רוצה גינה יפה ומטופחת — בלי כאב ראש?</h3>
+          <p style="margin:0;opacity:.95">נשמח להגיע לייעוץ ללא התחייבות ולתת הצעת מחיר במקום.</p>
+        </div>
+        <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap">
+          <a class="btn ghost" href="tel:+972534295336">חיוג עכשיו</a>
+          <a class="btn brand" href="https://wa.me/972534295336?text=%D7%94%D7%99%D7%99%20%D7%99%D7%A8%D7%95%D7%A7%20%D7%91%D7%A2%D7%99%D7%A8%2C%20%D7%A6%D7%A8%D7%99%D7%9A%20%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8">פתיחת וואטסאפ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container contact">
+      <form id="leadForm" class="form card" autocomplete="on">
+        <h2 style="margin-top:0">טופס מהיר להצעת מחיר</h2>
+        <p class="lead" style="margin-top:-6px">ממלאים 20 שניות ושולחים — חוזרים אליך בהקדם.</p>
+        <div class="form-row">
+          <div>
+            <label for="name">שם מלא</label>
+            <input id="name" name="name" placeholder="שם" required />
+          </div>
+          <div>
+            <label for="phone">טלפון</label>
+            <input id="phone" name="phone" placeholder="05x-xxxxxxx" inputmode="tel" pattern="[0-9\-\s+]{7,}" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="city">עיר / אזור</label>
+            <input id="city" name="city" placeholder="לוד / מרכז" />
+          </div>
+          <div>
+            <label for="service">סוג שירות</label>
+            <select id="service" name="service">
+              <option>אחזקה שוטפת</option>
+              <option>הקמת גינה</option>
+              <option>דשא סינתטי</option>
+              <option>גיזום עצים</option>
+              <option>מערכת השקיה</option>
+              <option>אחר</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="msg">מה הצורך שלך?</label>
+          <textarea id="msg" name="message" placeholder="כמה מילים על הגינה או העבודה המבוקשת..."></textarea>
+        </div>
+        <div class="submit">
+          <button class="btn brand" type="submit">שליחה וקבלת הצעה</button>
+          <a class="btn ghost" href="mailto:sbhtk1400@gmail.com?subject=%D7%A4%D7%A0%D7%99%D7%94%20%D7%9E%D7%93%D7%A3%20%D7%94%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%E2%80%94%20%D7%99%D7%A8%D7%95%D7%A7%20%D7%91%D7%A2%D7%99%D7%A8">או שלחו מייל</a>
+        </div>
+        <p id="formStatus" style="margin-top:10px;color:var(--muted)"></p>
+      </form>
+      <aside class="card">
+        <h3 style="margin-top:0">צור קשר</h3>
+        <p style="margin:0 0 8px">טלפון/וואטסאפ: <a href="tel:+972534295336">053-429-5336</a></p>
+        <p style="margin:0 0 8px">אימייל: <a href="mailto:sbhtk1400@gmail.com">sbhtk1400@gmail.com</a></p>
+        <p style="margin:0 0 8px">אזור פעילות: מרכז ישראל (לוד והסביבה)</p>
+        <hr style="border:none;border-top:1px solid #eaf1ec;margin:12px 0"/>
+        <h4 style="margin:0 0 8px">למה לבחור בנו?</h4>
+        <ul style="margin:0;padding-inline-start:18px;color:var(--muted)">
+          <li>זמינות מהירה ושירות אישי</li>
+          <li>עבודה נקייה ומדויקת — עד העלה האחרון</li>
+          <li>ייעוץ במקום והצעת מחיר הוגנת</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container inner">
+      <div>© <span id="y"></span> ירוק בעיר — כל הזכויות שמורות</div>
+      <div style="text-align:center">קישור לגוגל עסקים: <a href="#" aria-label="Google Business">להוספה</a></div>
+      <div style="text-align:end"><a href="#contact">לקבלת הצעת מחיר</a></div>
+    </div>
+  </footer>
+
+  <!-- FLOATING ACTIONS -->
+  <div class="float-wa">
+    <a href="https://wa.me/972534295336?text=%D7%94%D7%99%D7%99%2C%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8" aria-label="WhatsApp">
+      <span>וואטסאפ מהיר</span> 💬
+    </a>
+  </div>
+  <div class="call-bar">
+    <a href="tel:+972534295336">📞 חייג עכשיו</a>
+    <span>•</span>
+    <a href="https://wa.me/972534295336">שלח הודעה</a>
+  </div>
+
+  <script>
+    // שנה נוכחית בפוטר
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // אפקטי עלייה עדינים
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} })
+    },{threshold:.2});
+    document.querySelectorAll('[data-rise]').forEach(el=>io.observe(el));
+
+    // שליחת טופס ב-AJAX — שימוש ב-Formspree (החלף ל-endpoint שלך אם יש)
+    const FORM_ENDPOINT = 'https://formspree.io/f/your-id-here'; // TODO: עדכון מזהה אמיתי
+    const leadForm = document.getElementById('leadForm');
+    const statusEl = document.getElementById('formStatus');
+
+    leadForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      statusEl.textContent = 'שולח...';
+      const data = Object.fromEntries(new FormData(leadForm).entries());
+      try{
+        const res = await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(data)});
+        if(res.ok){
+          statusEl.style.color = '#0a8f47';
+          statusEl.textContent = 'נשלח בהצלחה! נחזור אליך בקרוב.';
+          leadForm.reset();
+        } else {
+          throw new Error('HTTP '+res.status);
+        }
+      }catch(err){
+        statusEl.style.color = '#b45309';
+        statusEl.innerHTML = 'תקלה בשליחה. אפשר <a href="mailto:sbhtk1400@gmail.com?subject=%D7%A4%D7%A0%D7%99%D7%94%20%D7%9E%D7%93%D7%A3%20%D7%94%D7%A0%D7%97%D7%99%D7%AA%D7%94%20%E2%80%94%20%D7%99%D7%A8%D7%95%D7%A7%20%D7%91%D7%A2%D7%99%D7%A8">לשלוח מייל</a> או <a href="https://wa.me/972534295336">וואטסאפ</a>.';
+      }
+    });
+  </script>
+</body>
+</html>
