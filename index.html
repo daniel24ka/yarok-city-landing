@@ -450,7 +450,7 @@
     document.querySelectorAll('[data-rise]').forEach(el=>io.observe(el));
 
     // ======== שליחת לידים ל-Cloudflare Worker ========
-    const WORKER_URL = 'https://small-leaf-759e.sbhkt1400.workers.dev/';
+    const WORKER_URL = 'https://small-leaf-759e.sbhtk1400.workers.dev/';
 
     async function sendToWorker(payload){
       const res = await fetch(WORKER_URL, {
