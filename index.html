@@ -49,7 +49,6 @@
     .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
     .btn.brand{background:linear-gradient(135deg,var(--brand-2),var(--brand));color:#fff}
     .btn.ghost{background:#f1f5f2;color:var(--ink)}
-    /* small Instagram glyph */
     .ig-icon{width:18px;height:18px;display:inline-block;border-radius:4px;background:
       radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);}
     .btn.ig{gap:6px}
@@ -148,7 +147,7 @@
     }
   </style>
 
-  <!-- LocalBusiness schema (עודכן לאזורי שירות + אינסטגרם) -->
+  <!-- LocalBusiness schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -240,7 +239,7 @@
     </div>
   </section>
 
-  <!-- SERVICE AREAS (SEO) -->
+  <!-- SERVICE AREAS -->
   <section class="section">
     <div class="container">
       <h2 data-rise>אזורי שירות</h2>
@@ -253,13 +252,12 @@
     </div>
   </section>
 
-  <!-- WORK: Projects with Before/After + Gallery -->
+  <!-- WORK -->
   <section id="work" class="section">
     <div class="container">
       <h2 data-rise>עבודות נבחרות — לפני/אחרי</h2>
       <p class="lead" data-rise style="transition-delay:.08s">גררו את הידית כדי להשוות לפני/אחרי, ולחצו "עוד תמונות" לפתיחת גלריה.</p>
 
-      <!-- Project 1: יוסי, לוד -->
       <article class="card" style="margin-bottom:16px" data-rise>
         <h3 style="margin-top:0">חצר יוסי — לוד</h3>
         <div class="compare" data-compare style="--pos:50%">
@@ -276,7 +274,6 @@
         </div>
       </article>
 
-      <!-- Project 2: רח׳ דובדבן, לוד -->
       <article class="card" data-rise>
         <h3 style="margin-top:0">רח׳ דובדבן — לוד (תחזוקה והכנה לחורף)</h3>
         <div class="compare" data-compare style="--pos:50%">
@@ -341,6 +338,11 @@
       <form id="leadForm" class="form card" autocomplete="on">
         <h2 style="margin-top:0">טופס מהיר להצעת מחיר</h2>
         <p class="lead" style="margin-top:-6px">ממלאים 20 שניות ושולחים — חוזרים אליך בהקדם.</p>
+
+        <!-- Honeypot -->
+        <input type="text" name="honey" id="hny"
+               style="position:absolute;left:-9999px;opacity:0;width:0;height:0" tabindex="-1" aria-hidden="true">
+
         <div class="form-row">
           <div><label for="name">שם מלא</label><input id="name" name="name" placeholder="שם" required /></div>
           <div><label for="phone">טלפון</label><input id="phone" name="phone" placeholder="05x-xxxxxxx" inputmode="tel" pattern="[0-9\-\s+]{7,}" required /></div>
@@ -365,6 +367,7 @@
         </div>
         <p id="formStatus" style="margin-top:10px;color:var(--muted)"></p>
       </form>
+
       <aside class="card">
         <h3 style="margin-top:0">צור קשר</h3>
         <p style="margin:0 0 8px">טלפון/וואטסאפ: <a href="tel:+972534295336">053-429-5336</a></p>
@@ -411,6 +414,9 @@
       <h3 style="margin:0 0 6px">הכנה לחורף: ניקוי עלים, גיזום וסידור ניקוזים</h3>
       <p style="margin:0 0 10px;color:var(--muted)">דואגים שהגינה תהיה מוכנה לגשם הראשון. קבלו ביקור הערכת מצב ללא התחייבות.</p>
       <form id="winterForm" class="form" style="padding:0;border:0;box-shadow:none">
+        <!-- Honeypot -->
+        <input type="text" name="honey"
+               style="position:absolute;left:-9999px;opacity:0;width:0;height:0" tabindex="-1" aria-hidden="true">
         <div class="form-row">
           <input name="name" placeholder="שם" required>
           <input name="phone" placeholder="טלפון" inputmode="tel" required>
@@ -443,47 +449,95 @@
     },{threshold:.2});
     document.querySelectorAll('[data-rise]').forEach(el=>io.observe(el));
 
-    // טופס ראשי (Formspree)
-    const FORM_ENDPOINT = 'https://formspree.io/f/xblppbok';
+    // ======== חיבור הטפסים ל-Cloudflare Worker ========
+    const WORKER_URL = 'https://small-leaf-759e.sbhkt1400.workers.dev/';
+
+    async function sendToWorker(payload){
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if(!res.ok){
+        const t = await res.text().catch(()=> '');
+        throw new Error(`HTTP ${res.status} ${t}`);
+      }
+      return res.json().catch(()=> ({}));
+    }
+
+    // טופס ראשי
     const leadForm = document.getElementById('leadForm');
-    const statusEl = document.getElementById('formStatus');
-    if (leadForm) {
+    const statusEl  = document.getElementById('formStatus');
+
+    if (leadForm){
       leadForm.addEventListener('submit', async (e)=>{
         e.preventDefault();
+        statusEl.style.color = '';
         statusEl.textContent = 'שולח...';
-        const data = Object.fromEntries(new FormData(leadForm).entries());
+
+        const fd   = new FormData(leadForm);
+        const data = Object.fromEntries(fd.entries());
+
+        const payload = {
+          full_name:    data.name || '',
+          phone:        data.phone || '',
+          city:         data.city || '',
+          service_type: document.getElementById('service')?.value || (data.service || ''),
+          message:      data.message || '',
+          honey:        data.honey || '',
+          source:       'Landing @ GitHub'
+        };
+
         try{
-          const res = await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(data)});
-          if(res.ok){ statusEl.style.color='#0a8f47'; statusEl.textContent='נשלח בהצלחה! נחזור אליך בקרוב.'; leadForm.reset(); }
-          else{ throw new Error('HTTP '+res.status); }
+          await sendToWorker(payload);
+          statusEl.style.color = '#0a8f47';
+          statusEl.textContent = 'נשלח בהצלחה! נחזור אליך בקרוב.';
+          leadForm.reset();
         }catch(err){
-          statusEl.style.color='#b45309';
-          statusEl.innerHTML='תקלה בשליחה. אפשר <a href="mailto:sbhtk1400@gmail.com">לשלוח מייל</a> או <a href="https://wa.me/972534295336">וואטסאפ</a>.';
+          statusEl.style.color = '#b45309';
+          statusEl.innerHTML = 'תקלה בשליחה. אפשר <a href="mailto:sbhtk1400@gmail.com">לשלוח מייל</a> או <a href="https://wa.me/972534295336">וואטסאפ</a>.';
+          console.error(err);
         }
       });
     }
 
-    // פופ-אפ חורף: נפתח אחרי 12 שנ׳ או בגלילת 60%
+    // פופ-אפ חורף
     const winterPopup = document.getElementById('winterPopup');
     const winterClose = document.getElementById('winterClose');
     function openWinter(){ if(!sessionStorage.getItem('winterShown')){ winterPopup.style.display='grid'; sessionStorage.setItem('winterShown','1'); } }
     setTimeout(openWinter, 12000);
     window.addEventListener('scroll',()=>{ if(window.scrollY > (document.body.scrollHeight*0.6)) openWinter(); }, {passive:true});
-    if (winterClose) winterClose.addEventListener('click',()=> winterPopup.style.display='none');
+    winterClose?.addEventListener('click',()=> winterPopup.style.display='none');
 
-    // שליחת טופס פופ-אפ
     const winterForm = document.getElementById('winterForm');
-    if (winterForm) {
+    if (winterForm){
       winterForm.addEventListener('submit', async (e)=>{
         e.preventDefault();
-        const data = Object.fromEntries(new FormData(winterForm).entries());
-        data.source='winter-popup';
+        const fd   = new FormData(winterForm);
+        const data = Object.fromEntries(fd.entries());
+
+        const payload = {
+          full_name:    data.name || '',
+          phone:        data.phone || '',
+          city:         '',
+          service_type: 'הכנה לחורף',
+          message:      'ליד מפופ-אפ חורף',
+          honey:        data.honey || '',
+          source:       'Winter popup'
+        };
+
         try{
-          await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(data)});
-          winterPopup.style.display='none'; alert('תודה! נחזור אליך להצעת חורף.'); winterForm.reset();
-        }catch(err){ alert('תקלה בשליחה, נסו שוב או צרו קשר בוואטסאפ.'); }
+          await sendToWorker(payload);
+          winterPopup.style.display='none';
+          alert('תודה! נחזור אליך להצעת חורף.');
+          winterForm.reset();
+        }catch(err){
+          alert('תקלה בשליחה, נסה שוב או צור קשר בוואטסאפ.');
+          console.error(err);
+        }
       });
     }
+    // ======== סוף חיבור הטפסים ========
 
     // Before/After compare init
     document.querySelectorAll('[data-compare]').forEach(setupCompare);
@@ -511,7 +565,7 @@
         const style = getComputedStyle(wrapper).getPropertyValue('--pos').trim();
         const val = parseFloat(style);
         let next = val;
-        if(e.key==='ArrowLeft') next = Math.max(0, val - step);
+        if(e.key==='ArrowLeft')  next = Math.max(0,   val - step);
         if(e.key==='ArrowRight') next = Math.min(100, val + step);
         wrapper.style.setProperty('--pos', next + '%');
         scrim.setAttribute('aria-valuenow', Math.round(next));
@@ -535,9 +589,7 @@
     window.addEventListener('keydown',(e)=>{ if(lb.style.display==='grid'){ if(e.key==='Escape') closeLB(); if(e.key==='ArrowLeft') lbPrev.click(); if(e.key==='ArrowRight') lbNext.click(); } });
 
     document.querySelectorAll('[data-gallery]').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        try{ const arr = JSON.parse(btn.getAttribute('data-gallery')); openLB(arr,0); }catch(err){ console.error('bad gallery json', err); }
-      });
+      btn.addEventListener('click',()=>{ try{ openLB(JSON.parse(btn.getAttribute('data-gallery')),0); }catch(err){ console.error('bad gallery json', err); }});
     });
   </script>
 
