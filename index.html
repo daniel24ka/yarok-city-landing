@@ -177,7 +177,7 @@
       <div class="nav-cta">
         <a class="btn ghost" href="#work">עבודות</a>
         <a class="btn ghost" href="#services">שירותים</a>
-        <a class="btn ig" href="https://www.instagram.com/citygreen_il/" target="_blank" rel="noopener">
+        <a class="btn ig" href="https://www.instagram.com/citygreen_il/" target="_blank" rel="noopener noreferrer">
           <span class="ig-icon" aria-hidden="true"></span> אינסטגרם
         </a>
         <a class="btn brand" href="#contact">לקבלת הצעת מחיר</a>
@@ -390,7 +390,7 @@
       <div>© <span id="y"></span> ירוק בעיר — גינון בלוד, רמלה ובאר יעקב | 053-429-5336</div>
       <div style="text-align:center">
         ראו עוד עבודות באינסטגרם:
-        <a href="https://www.instagram.com/citygreen_il/" target="_blank" rel="noopener">@citygreen_il</a>
+        <a href="https://www.instagram.com/citygreen_il/" target="_blank" rel="noopener noreferrer">@citygreen_il</a>
       </div>
       <div style="text-align:end"><a href="#contact">לקבלת הצעת מחיר</a></div>
     </div>
@@ -398,14 +398,14 @@
 
   <!-- FLOATING ACTIONS -->
   <div class="float-wa">
-    <a href="https://wa.me/972534295336?text=%D7%94%D7%99%D7%99%2C%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8" aria-label="WhatsApp">
+    <a href="https://wa.me/972534295336?text=%D7%94%D7%99%D7%99%2C%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8" aria-label="WhatsApp" rel="noopener noreferrer">
       <span>וואטסאפ מהיר</span> 💬
     </a>
   </div>
   <div class="call-bar">
     <a href="tel:+972534295336">📞 חייג עכשיו</a>
     <span>•</span>
-    <a href="https://wa.me/972534295336">שלח הודעה</a>
+    <a href="https://wa.me/972534295336" rel="noopener noreferrer">שלח הודעה</a>
   </div>
 
   <!-- Winter popup (לידים) -->
@@ -449,13 +449,17 @@
     },{threshold:.2});
     document.querySelectorAll('[data-rise]').forEach(el=>io.observe(el));
 
-    // ======== חיבור הטפסים ל-Cloudflare Worker ========
+    // ======== שליחת לידים ל-Cloudflare Worker ========
     const WORKER_URL = 'https://small-leaf-759e.sbhkt1400.workers.dev/';
 
     async function sendToWorker(payload){
       const res = await fetch(WORKER_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        mode: 'cors',
         body: JSON.stringify(payload)
       });
       if(!res.ok){
@@ -532,7 +536,7 @@
           alert('תודה! נחזור אליך להצעת חורף.');
           winterForm.reset();
         }catch(err){
-          alert('תקלה בשליחה, נסה שוב או צור קשר בוואטסאפ.');
+          alert('תקלה בשליחה, נסו שוב או צרו קשר בוואטסאפ.');
           console.error(err);
         }
       });
